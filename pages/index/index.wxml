@@ -18,7 +18,7 @@
     <view class='option-item'>
       <view class='common-title'>社保汇缴基数:</view>
       <view class='option-item option-right-item'>
-        <input class="option-input border" disabled="{{disableSheBaoCheckInput}}" type='digit' bindinput='inputSheBao' value='{{sheBaoBasicNum}}'></input> 
+        <input class="option-input border" disabled="{{disableSheBaoCheckInput}}" type='digit' bindinput='inputSheBao' bindblur="blurSheBao" value='{{sheBaoBasicNum}}'></input> 
         <checkbox-group class="option-checkbox margin-left" bindchange="bindSheBaoInputCheckBoxChange">
              <checkbox>自定义</checkbox>
           </checkbox-group>
@@ -28,7 +28,7 @@
     <view class='option-item'>
       <view class='common-title'>公积金汇缴基数:</view>
       <view class='option-item option-right-item'>
-        <input class="option-input border" disabled="{{disableGongJiJinCheckInput}}" auto-focus placeholder="将会焦点" type='digit' bindinput='inputGongJiJin' value='{{gongJiJinBasicNum}}'> </input> 
+        <input class="option-input border" disabled="{{disableGongJiJinCheckInput}}" type='digit' bindinput='inputGongJiJin' bindblur="blurGongJiJin" value='{{gongJiJinBasicNum}}'> </input> 
         <checkbox-group class="option-checkbox margin-left" bindchange="bindGongJiJinInputCheckBoxChange">
            <checkbox>自定义</checkbox>
           </checkbox-group>

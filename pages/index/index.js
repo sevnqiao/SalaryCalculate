@@ -5,7 +5,7 @@ const app = getApp()
 Page({
   data: {
     array: ['1%', '2%', '3%', '4%', '5%', '6%', '7%', '8%'],
-    
+    valueArray: ['0.01', '0.02', '0.03', '0.04', '0.05', '0.06', '0.07', '0.08'],
     index: 0,
     disablePicker: true,
     disableSheBaoCheckInput: true,
@@ -33,20 +33,22 @@ Page({
   },
 
   onLoad:function(){
-
-
+    this.setData({
+      sheBaoBasicNum:this.data.shuiQianNum,
+      gongJiJinBasicNum: this.data.shuiQianNum
+    })
   },
 
   bindPickerChange(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value,
-      buChongGongJiJinPercent: this.data.array[0]
+      buChongGongJiJinPercent: this.data.valueArray[e.detail.value]
     })
   },
 
   bindCheckBoxChange(e) {
     this.setData({
+      buChongGongJiJinPercent: this.data.valueArray[this.data.index],
       disablePicker: !this.data.disablePicker
     })
   },
@@ -68,7 +70,7 @@ Page({
 
   inputShuiQian(e) {
     this.setData ({
-      shuiQianNum:e.detail.value
+      shuiQianNum: e.detail.value
     })
   },
   inputSheBao(e) {
@@ -82,7 +84,34 @@ Page({
     })
   },
 
+  blurSheBao(e) {
+    var num = e.detail.value
+    if (num > this.data.shuiQianNum) {
+      num = this.data.shuiQianNum;
+    }
+    if (num < 4723) {
+      num = 4723;
+    }
+    this.setData({
+      sheBaoBasicNum: num
+    })
+  },
+  blurGongJiJin(e) {
+    var num = e.detail.value
+    if (num > this.data.shuiQianNum) {
+      num = this.data.shuiQianNum;
+    }
+    if (num < 4723) {
+      num = 4723;
+    }
+    this.setData({
+      gongJiJinBasicNum: num
+    })
+  },
+
   caclulate(e) {
+    console.log('picker发送选择改变，携带值为', this.data.buChongGongJiJinPercent)
+
     const self = this
     wx.request({
       url: 'http://salarycalculator.sinaapp.com/calculate',
@@ -91,8 +120,8 @@ Page({
         origin_salary: this.data.shuiQianNum,
         base_3j: this.data.sheBaoBasicNum,
         base_gjj: this.data.gongJiJinBasicNum,
-        is_gjj: 'true',
-        is_exgjj: this.data.gongJiJinCheck,
+        is_gjj: this.data.gongJiJinCheck,
+        is_exgjj: !this.data.disablePicker,
         factor_exgjj: this.data.buChongGongJiJinPercent
       },
       header: {
@@ -115,8 +144,8 @@ Page({
             item.value = res.data.personal_gjj + '   ' + '(7%)'
             item.orgValue = res.data.org_gjj + '   ' + '(7%)'
           } else if (i == 4) {
-            item.value = res.data.personal_exgjj + '   ' + '(0%)'
-            item.orgValue = res.data.org_exgjj + '   ' + '(0%)'
+            item.value = res.data.personal_exgjj + '   ' + '(' + self.data.buChongGongJiJinPercent*100 + '%)'
+            item.orgValue = res.data.org_exgjj + '   ' + '(' + self.data.buChongGongJiJinPercent * 100 + '%)'
           } else if (i == 5) {
             item.value = res.data.personal_gongshang
             item.orgValue = res.data.org_gongshang + '   ' + '(0.2%)'
@@ -137,7 +166,7 @@ Page({
             item.orgValue = res.data.old_final_salary+'(老税法)'
           }
         }
-        console.log('picker发送选择改变，携带值为', self.data.items)
+        // console.log('picker发送选择改变，携带值为', self.data.items)
 
         self.setData({
           items: datadict
