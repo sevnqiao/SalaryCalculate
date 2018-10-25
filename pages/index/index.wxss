@@ -1,22 +1,128 @@
-/**index.wxss**/
-.userinfo {
+
+.container{
+  margin-top: 30rpx;
+  height: 90%;
+  width: 100%;
+}
+.salary-section{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+}
+.salary-input-border{
+  margin-left: 30rpx;
+  width: auto;
+  display: flex;
+  border: 1px solid #999;
+  border-radius: 4px;
+}
+.salary-unit-border{
+  width: 25px;
+  display: flex;
+  border-right: 1px solid #999;
+  border-radius: 4px;
+  background-color: #eee;
+}
+.salary-title .salary-unit{
+  margin-top: 8rpx;
+  margin-left: 16rpx;
+  font-size: 26rpx;
+  color: #666
+}
+.salary-input{
+  margin-left: 8rpx;
+  font-size: 26rpx;
+  text-align: right;
+  padding-right: 10px;
+}
+.salary-button{
+  height: 26px;
+  background-color: red;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 10rpx;
-  border-radius: 50%;
+.more-container{
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #eee;
+  font-size: 15px;
+  border-radius: 4px;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.salary-more-section{
+  margin: 10px;
+}
+.salary-more-title{
+  margin-top: 2px;
+  width: 100%;
+}
+.salary-more-input{
+  width: auto;
+  border: 1px solid #999;
+  border-radius: 4px;
+  margin-right: 5px;
+  text-align: right;
+  padding-right: 5px;
+}
+.salary-more-checkbox{
+  width: 130%;
+  height: 24px;
+
+}
+.salary-section-right{
+  float: right;
+  width: 180%;
+}
+.salary-margin-bottom{
+  margin-bottom: 10px;
+}
+.picker-input{
+  background-color: #ddd;
+  width: 50px;
+  text-align: center;
 }
 
-.usermotto {
-  margin-top: 200px;
-  color: red
+
+.history-table-wrap{
+  position: absolute;
+  width: 95%;
+  /* left: 50%; */
+  /* margin-left: -334rpx; */
+  margin-bottom: 40rpx;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+/* 表格代码   */
+.table{
+  border:1px solid #dadada;
+  border-right:0;
+  border-bottom: 0;
+  width: 98%;
+  margin-left: 1%;
+}
+.tr{
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+}
+.th,.td{
+  padding: 10px;
+  border-bottom: 1px solid #dadada;
+  border-right: 1px solid #dadada;
+  text-align: center;
+  width: 100%;
+}
+.th1,.td1{
+  width: 40%;
+}
+.th2,.td2{
+  width: 66%;
+}
+.th{
+  font-weight: 800;
+  background-color: #b66242;
+  font-size: 28rpx;
+  color: white;
+}
+.td{
+  font-size: 20rpx;
+  color: #ec9480;
 }

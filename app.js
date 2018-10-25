@@ -35,5 +35,16 @@ App({
   },
   globalData: {
     userInfo: null
+  },
+
+  
+  onShow: function (options) {
+
+  },
+  onHide: function () {
+
+  },
+  onError: function (msg) {
+
   }
 })

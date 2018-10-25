@@ -4,56 +4,148 @@ const app = getApp()
 
 Page({
   data: {
-    motto:"hello world",
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    array: ['1%', '2%', '3%', '4%', '5%', '6%', '7%', '8%'],
+    
+    index: 0,
+    disablePicker: true,
+    disableSheBaoCheckInput: true,
+    disableGongJiJinCheckInput: true,
+    gongJiJinCheck: true,
+
+    shuiQianNum:10000,
+    sheBaoBasicNum:4279,
+    gongJiJinBasicNum:2300,
+    buChongGongJiJinPercent:0,
+
+    items: [
+      { orgValue: '', value: '', name: '养老保险金' },
+      { orgValue: '', value: '', name: '医疗保险金' },
+      { orgValue: '', value: '', name: '失业保险金' },
+      { orgValue: '', value: '', name: '基本住房公积金' },
+      { orgValue: '', value: '', name: '补充住房公积金' },
+      { orgValue: '', value: '', name: '工伤保险金' },
+      { orgValue: '', value: '', name: '生育保险金' },
+      { orgValue: '', value: '', name: '共计支出' },
+      { orgValue: '', value: '', name: '应纳税工资' },
+      { orgValue: '', value: '', name: '个人所得税' },
+      { orgValue: '', value: '', name: '税后月薪' }
+    ],
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
+
+  onLoad:function(){
+
+
+  },
+
+  bindPickerChange(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      index: e.detail.value,
+      buChongGongJiJinPercent: this.data.array[0]
     })
   },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+
+  bindCheckBoxChange(e) {
+    this.setData({
+      disablePicker: !this.data.disablePicker
+    })
+  },
+  bindGongJiJinInputCheckBoxChange(e) {
+    this.setData({
+      disableGongJiJinCheckInput: !this.data.disableGongJiJinCheckInput
+    })
+  },
+  bindSheBaoInputCheckBoxChange(e) {
+    this.setData({
+      disableSheBaoCheckInput: !this.data.disableSheBaoCheckInput
+    })
+  },
+  bindGongJiJinCheckBoxChange(e) {
+    this.setData({
+      gongJiJinCheck: !this.data.gongJiJinCheck
+    })
+  },
+
+  inputShuiQian(e) {
+    this.setData ({
+      shuiQianNum:e.detail.value
+    })
+  },
+  inputSheBao(e) {
+    this.setData({
+      sheBaoBasicNum: e.detail.value
+    })
+  },
+  inputGongJiJin(e) {
+    this.setData({
+      gongJiJinBasicNum: e.detail.value
+    })
+  },
+
+  caclulate(e) {
+    const self = this
+
+    // ?city=shanghai&origin_salary=0&base_3j=4279&base_gjj=2300&is_gjj=true&is_exgjj=false&factor_exgjj=0.08
+    wx.request({
+      url: 'http://salarycalculator.sinaapp.com/calculate',
+      data:{
+        city: 'shanghai',
+        origin_salary: this.data.shuiQianNum,
+        base_3j: this.data.sheBaoBasicNum,
+        base_gjj: this.data.gongJiJinBasicNum,
+        is_gjj: 'true',
+        is_exgjj: this.data.gongJiJinCheck,
+        factor_exgjj: this.data.buChongGongJiJinPercent
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        const datadict = self.data.items
+        for (let i = 0, lenI = datadict.length; i < lenI; ++i) {
+          const item = datadict[i]
+          if (i==0){
+            item.value = res.data.personal_yanglao + '   ' + '(8%)'
+            item.orgValue = res.data.org_yanglao + '   ' + '(20%)'
+          } else if (i == 1) {
+            item.value = res.data.personal_yiliao + '   ' + '(2%)'
+            item.orgValue = res.data.org_yiliao + '   ' + '(9.5%)'
+          } else if (i == 2) {
+            item.value = res.data.personal_shiye + '   ' + '(0.5%)'
+            item.orgValue = res.data.org_shiye + '   ' + '(0.5%)'
+          } else if (i == 3) {
+            item.value = res.data.personal_gjj + '   ' + '(7%)'
+            item.orgValue = res.data.org_gjj + '   ' + '(7%)'
+          } else if (i == 4) {
+            item.value = res.data.personal_exgjj + '   ' + '(0%)'
+            item.orgValue = res.data.org_exgjj + '   ' + '(0%)'
+          } else if (i == 5) {
+            item.value = res.data.personal_gongshang
+            item.orgValue = res.data.org_gongshang + '   ' + '(0.2%)'
+          } else if (i == 6) {
+            item.value = res.data.personal_shengyu
+            item.orgValue = res.data.org_shengyu + '   ' + '(1%)'
+          } else if (i == 7) {
+            item.value = res.data.personal_allpay
+            item.orgValue = res.data.org_allpay
+          } else if (i == 8) {
+            item.value = res.data.before_tax
+            item.orgValue = res.data.before_tax
+          } else if (i == 9) {
+            item.value = res.data.tax
+            item.orgValue = res.data.old_tax + '(老税法)'
+          } else if (i == 10) {
+            item.value = res.data.final_salary
+            item.orgValue = res.data.old_final_salary+'(老税法)'
+          }
+        }
+        console.log('picker发送选择改变，携带值为', self.data.items)
+
+        self.setData({
+          items: datadict
         })
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
     })
-  },
-  showAlert:function () {
-     this.setData({
-       motto:"I am Xiong!"
-     })
+
   }
 })
