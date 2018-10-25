@@ -84,8 +84,6 @@ Page({
 
   caclulate(e) {
     const self = this
-
-    // ?city=shanghai&origin_salary=0&base_3j=4279&base_gjj=2300&is_gjj=true&is_exgjj=false&factor_exgjj=0.08
     wx.request({
       url: 'http://salarycalculator.sinaapp.com/calculate',
       data:{

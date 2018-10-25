@@ -1,71 +1,70 @@
 <!--index.wxml-->
 
 <view class="container">
-  <view class="salary-section">
-    <view class="salary-title">税前</view>
-    <view class="salary-input-border">
-      <view class="salary-unit-border">
-         <view class="salary-unit">¥</view>
-      </view>
-      <input class="salary-input" auto-focus placeholder="将会焦点" type='digit' bindinput='inputShuiQian' value='{{shuiQianNum}}'></input>  
+  <view class='salary'>
+    <view class='common-title'>税前工资:</view>
+    <view class='border option-item'>
+      <view class='common-title-unit'>¥</view>
+      <input class="option-input common-title shuiqianInput" type='digit' bindinput='inputShuiQian' value='{{shuiQianNum}}'></input>  
     </view>
-    <button class="salary-button" size="mini" bindtap='caclulate'>计算</button>
+    <button class="button" size="mini" bindtap='caclulate'>计算</button>
   </view>
 
-  <view class="more-container">
-    <view class="salary-more-section">
-      <view class='salary-more-title salary-margin-bottom'>更多选项</view>
-      <!-- 社保汇缴基数 -->
-      <view class="salary-section salary-margin-bottom ">
-        <view class="salary-more-title">社保汇缴基数:</view>
-        <view class='salary-section salary-section-right'>
-          <input class="salary-more-input" disabled="{{disableSheBaoCheckInput}}" auto-focus placeholder="将会焦点" type='digit' bindinput='inputSheBao' value='{{sheBaoBasicNum}}'></input> 
-          <checkbox-group bindchange="bindSheBaoInputCheckBoxChange">
-          <checkbox class="salary-more-checkbox">自定义</checkbox>
-          </checkbox-group>
-        </view>
-      </view>
-      <!-- 公积金汇缴基数 -->
-      <view class="salary-section salary-margin-bottom ">
-        <view class="salary-more-title">公积金汇缴基数:</view>
-        <view class='salary-section salary-section-right'>
-          <input class="salary-more-input" disabled="{{disableGongJiJinCheckInput}}" auto-focus placeholder="将会焦点" type='digit' bindinput='inputGongJiJin' value='{{gongJiJinBasicNum}}'> </input> 
-          <checkbox-group bindchange="bindGongJiJinInputCheckBoxChange">
-           <checkbox class="salary-more-checkbox">自定义</checkbox>
-          </checkbox-group>
-        </view>
-      </view>
 
-      <checkbox-group bindchange="bindGongJiJinCheckBoxChange">
-        <checkbox class="salary-more-checkbox" checked='{{gongJiJinCheck}}'>汇缴公积金</checkbox>
-      </checkbox-group>
-      <checkbox-group bindchange="bindCheckBoxChange">
-        <checkbox class="salary-more-checkbox">汇缴补充住房公积金(非政策强制)</checkbox>
-      </checkbox-group>
-      <view class='salary-section'>
-        <view class="salary-more-title">单位与个人汇缴比例：</view>
-        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" disabled="{{disablePicker}}">
-          <view class="picker-input">{{array[index]}}</view>
-        </picker>
+  <!-- 补充信息 -->
+  <view class="options">
+    <view class='common-title'>更多选项</view>
+    <view class='line-margin'></view>
+    <view class='option-item'>
+      <view class='common-title'>社保汇缴基数:</view>
+      <view class='option-item option-right-item'>
+        <input class="option-input border" disabled="{{disableSheBaoCheckInput}}" type='digit' bindinput='inputSheBao' value='{{sheBaoBasicNum}}'></input> 
+        <checkbox-group class="option-checkbox margin-left" bindchange="bindSheBaoInputCheckBoxChange">
+             <checkbox>自定义</checkbox>
+          </checkbox-group>
       </view>
     </view>
-  
+    <view class='line-margin'></view>
+    <view class='option-item'>
+      <view class='common-title'>公积金汇缴基数:</view>
+      <view class='option-item option-right-item'>
+        <input class="option-input border" disabled="{{disableGongJiJinCheckInput}}" auto-focus placeholder="将会焦点" type='digit' bindinput='inputGongJiJin' value='{{gongJiJinBasicNum}}'> </input> 
+        <checkbox-group class="option-checkbox margin-left" bindchange="bindGongJiJinInputCheckBoxChange">
+           <checkbox>自定义</checkbox>
+          </checkbox-group>
+      </view>
+    </view>
+    <view class='line-margin'></view>
+    <checkbox-group class="option-checkbox common-title" style="width:100%" bindchange="bindGongJiJinCheckBoxChange">
+      <checkbox checked='{{gongJiJinCheck}}'>汇缴公积金</checkbox>
+    </checkbox-group>
+    <view class='line-margin'></view>
+    <checkbox-group class="option-checkbox common-title" style="width:100%" bindchange="bindCheckBoxChange">
+      <checkbox>汇缴补充住房公积金(非政策强制)</checkbox>
+    </checkbox-group>
+    <view class='line-margin'></view>
+    <view class='option-item'>
+      <view class="common-title">单位与个人汇缴比例：</view>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" disabled="{{disablePicker}}">
+        <view class="picker-input">{{array[index]}}</view>
+      </picker>
+    </view>
+  </view>  
 
+  <!-- 表格 -->
   <view class='history-table-wrap'>
-    <view class="table">
-      <view class="tr">
-          <view class="th th1"></view>
-          <view class="th th2">个人</view>
-          <view class="th th3">公司</view>
-      </view>
-      <view class="tr" wx:for="{{items}}" wx:key="{{item.value}}">
-          <view class="td td1">{{item.name}}</view>
-          <view class="td td2">{{item.value}}</view>
-          <view class="td td3">{{item.orgValue}}</view>
+      <view class="table">
+        <view class="tr">
+            <view class="th th1"></view>
+            <view class="th th2">个人</view>
+            <view class="th th3">公司</view>
+        </view>
+        <view class="tr" wx:for="{{items}}" wx:key="{{item.value}}">
+            <view class="td td1">{{item.name}}</view>
+            <view class="td td2">{{item.value}}</view>
+            <view class="td td3">{{item.orgValue}}</view>
+        </view>
       </view>
     </view>
-  </view>
-</view>
-
 </view>
 

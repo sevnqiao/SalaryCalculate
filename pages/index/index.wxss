@@ -4,88 +4,79 @@
   height: 90%;
   width: 100%;
 }
-.salary-section{
+.salary{
   display: flex;
+  margin: 2.5%;
+  align-items: center;
 }
-.salary-input-border{
-  margin-left: 30rpx;
-  width: auto;
-  display: flex;
-  border: 1px solid #999;
-  border-radius: 4px;
-}
-.salary-unit-border{
-  width: 25px;
-  display: flex;
-  border-right: 1px solid #999;
-  border-radius: 4px;
-  background-color: #eee;
-}
-.salary-title .salary-unit{
-  margin-top: 8rpx;
-  margin-left: 16rpx;
-  font-size: 26rpx;
-  color: #666
-}
-.salary-input{
-  margin-left: 8rpx;
-  font-size: 26rpx;
-  text-align: right;
-  padding-right: 10px;
-}
-.salary-button{
+.button{
   height: 26px;
-  background-color: red;
-}
-
-.more-container{
-  margin-top: 30px;
+  width: 120px;
   margin-left: 10px;
-  margin-right: 10px;
-  background-color: #eee;
-  font-size: 15px;
-  border-radius: 4px;
+  color: #fff;
+  background-color: #b66242;
+  align-content: center;
+}
+.line-margin {
+  margin-top: 5px;
 }
 
-.salary-more-section{
+/*  */
+.common-title-unit {
+  text-align: center;
+  width: 40px;
+  font-size: 15px;
+  color: #999;
+  margin-right: 10px;
+}
+
+.border {
+  border-bottom: 1px solid #999;
+}
+
+/*  */
+.options {
+  background-color: #eee;
+  border-radius: 4px;
+  padding: 10px;
   margin: 10px;
 }
-.salary-more-title{
-  margin-top: 2px;
+.common-title, .option-item {
+  font-size: 15px;
+  color: #999;
   width: 100%;
 }
-.salary-more-input{
-  width: auto;
-  border: 1px solid #999;
-  border-radius: 4px;
-  margin-right: 5px;
-  text-align: right;
-  padding-right: 5px;
+.option-item {
+  display: flex;
+  align-items: center;
 }
-.salary-more-checkbox{
-  width: 130%;
-  height: 24px;
-
+.option-input {
+  text-align: center;
+  height: 18px;
 }
-.salary-section-right{
+.option-right-item {
   float: right;
-  width: 180%;
 }
-.salary-margin-bottom{
-  margin-bottom: 10px;
+.option-checkbox{
+  width: 150px;
+  zoom: 60%;
 }
-.picker-input{
+.picker-input {
+  float: right;
   background-color: #ddd;
   width: 50px;
   text-align: center;
 }
 
+.margin-left{
+  margin-left: 10px; 
+}
 
+/* 表格 */
 .history-table-wrap{
   position: absolute;
   width: 95%;
-  /* left: 50%; */
-  /* margin-left: -334rpx; */
+  margin-left: 2.5%;
   margin-bottom: 40rpx;
   overflow-y: scroll;
   overflow-x: hidden;
