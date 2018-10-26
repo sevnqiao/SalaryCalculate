@@ -108,8 +108,11 @@ Page({
     if (num > this.data.shuiQianNum) {
       num = this.data.shuiQianNum;
     }
-    if (num < 4723) {
-      num = 4723;
+    if (num < 4279) {
+      num = 4279;
+    }
+    if (num > 21396) {
+      num = 21396;
     }
     this.setData({
       sheBaoBasicNum: num
@@ -120,8 +123,11 @@ Page({
     if (num > this.data.shuiQianNum) {
       num = this.data.shuiQianNum;
     }
-    if (num < 4723) {
-      num = 4723;
+    if (num < 2300) {
+      num = 2300;
+    }
+    if (num > 21396) {
+      num = 21396;
     }
     this.setData({
       gongJiJinBasicNum: num
@@ -174,7 +180,6 @@ Page({
             item.orgValue = res.data.org_allpay
           } else if (i == 8) {
             item.value = res.data.before_tax
-            item.orgValue = res.data.before_tax
           } else if (i == 9) {
             item.value = res.data.tax
             item.orgValue = res.data.old_tax + '(老税法)'
