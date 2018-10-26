@@ -78,14 +78,14 @@
   <view class='options'>
     <view class="common-title">税前工资去向（共¥ {{shuiQianNum}}）</view>
     <view class="chart-container">
-      <canvas canvas-id="pieCanvas" class="chart-canvas" bindtouchstart="touchHandler"></canvas>
+      <canvas canvas-id="pieCanvas" class="chart-canvas"></canvas>
     </view>
   </view>
 
   <view class='options'>
     <view class="common-title">单位成本去向（共¥ {{orgAllPay}}）</view>
     <view class="chart-container">
-      <canvas canvas-id="orgPieCanvas" class="chart-canvas" bindtouchstart="touchHandler"></canvas>
+      <canvas canvas-id="orgPieCanvas" class="chart-canvas"></canvas>
     </view>
   </view>
   

@@ -144,6 +144,11 @@ Page({
 
   caclulate(e) {
     const self = this
+
+    wx.showLoading({
+      title: '计算中...',
+    })
+
     wx.request({
       url: 'https://salarycalculator.sinaapp.com/calculate',
       data:{
@@ -159,6 +164,7 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success(res) {
+        wx.hideLoading()
         const datadict = self.data.items
         for (let i = 0, lenI = datadict.length; i < lenI; ++i) {
           const item = datadict[i]
@@ -202,6 +208,9 @@ Page({
 
         self.createPieChart(res.data)
         self.createOrgPieChart(res.data)
+      },
+      fail() {
+        wx.hideLoading()
       }
     })
 
