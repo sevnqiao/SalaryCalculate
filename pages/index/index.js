@@ -6,6 +6,25 @@ Page({
   data: {
     array: ['1%', '2%', '3%', '4%', '5%', '6%', '7%', '8%'],
     valueArray: ['0.01', '0.02', '0.03', '0.04', '0.05', '0.06', '0.07', '0.08'],
+
+
+    cityArray: [{ value: 'beijing', name: '北京'},
+                { value: 'shanghai', name: '上海' },
+                { value: 'guangzhou', name: '广州' },
+                { value: 'shenzhen', name: '深圳' },
+                { value: 'nanjing', name: '南京' },
+                { value: 'hangzhou', name: '杭州' },
+                { value: 'wuhan', name: '武汉' },
+                { value: 'chongqing', name: '重庆' },
+                { value: 'beijing', name: '北京' },
+                { value: 'beijing', name: '北京' }],
+
+
+
+
+
+
+
     index: 0,
     disablePicker: true,
     disableSheBaoCheckInput: true,
@@ -110,11 +129,9 @@ Page({
   },
 
   caclulate(e) {
-    console.log('picker发送选择改变，携带值为', this.data.buChongGongJiJinPercent)
-
     const self = this
     wx.request({
-      url: 'http://salarycalculator.sinaapp.com/calculate',
+      url: 'https://salarycalculator.sinaapp.com/calculate',
       data:{
         city: 'shanghai',
         origin_salary: this.data.shuiQianNum,

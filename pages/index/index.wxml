@@ -56,8 +56,8 @@
       <view class="table">
         <view class="tr">
             <view class="th th1"></view>
-            <view class="th th2">个人</view>
-            <view class="th th3">公司</view>
+            <view class="th th2">个人应缴</view>
+            <view class="th th3">公司应缴</view>
         </view>
         <view class="tr" wx:for="{{items}}" wx:key="{{item.value}}">
             <view class="td td1">{{item.name}}</view>
