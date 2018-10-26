@@ -51,20 +51,46 @@
     </view>
   </view>  
 
+  <!-- 抵扣细则 -->
+
+
+
+
+
   <!-- 表格 -->
   <view class='history-table-wrap'>
-      <view class="table">
-        <view class="tr">
-            <view class="th th1"></view>
-            <view class="th th2">个人应缴</view>
-            <view class="th th3">公司应缴</view>
-        </view>
-        <view class="tr" wx:for="{{items}}" wx:key="{{item.value}}">
-            <view class="td td1">{{item.name}}</view>
-            <view class="td td2">{{item.value}}</view>
-            <view class="td td3">{{item.orgValue}}</view>
-        </view>
+    <view class="table">
+      <view class="tr">
+          <view class="th th1"></view>
+          <view class="th th2">个人应缴</view>
+          <view class="th th3">公司应缴</view>
+      </view>
+      <view class="tr" wx:for="{{items}}" wx:key="{{item.value}}">
+          <view class="td td1">{{item.name}}</view>
+          <view class="td td2">{{item.value}}</view>
+          <view class="td td3">{{item.orgValue}}</view>
       </view>
     </view>
+  </view>
+
+  <!-- 饼状图分析 -->
+
+  <view class='options'>
+    <view class="common-title">税前工资去向（共¥ {{shuiQianNum}}）</view>
+    <view class="chart-container">
+      <canvas canvas-id="pieCanvas" class="chart-canvas" bindtouchstart="touchHandler"></canvas>
+    </view>
+  </view>
+
+  <view class='options'>
+    <view class="common-title">单位成本去向（共¥ {{orgAllPay}}）</view>
+    <view class="chart-container">
+      <canvas canvas-id="orgPieCanvas" class="chart-canvas" bindtouchstart="touchHandler"></canvas>
+    </view>
+  </view>
+  
+
+
+
 </view>
 

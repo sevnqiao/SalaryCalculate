@@ -38,8 +38,9 @@
 .options {
   background-color: #eee;
   border-radius: 4px;
-  padding: 10px;
-  margin: 10px;
+  padding: 2.5%;
+  margin: 2.5%;
+  width: 90%;
 }
 .common-title, .option-item {
   font-size: 15px;
@@ -74,7 +75,7 @@
 
 /* 表格 */
 .history-table-wrap{
-  position: absolute;
+  /* position: absolute; */
   width: 95%;
   margin-left: 2.5%;
   margin-bottom: 40rpx;
@@ -116,4 +117,15 @@
 .td{
   font-size: 20rpx;
   color: #ec9480;
+}
+
+
+/*  */
+.chart-container{
+  height:300px;
+}
+.chart-canvas{
+  margin-left: -5%;
+  height:100%;
+  width:auto;
 }
