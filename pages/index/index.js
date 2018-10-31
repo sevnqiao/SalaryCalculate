@@ -8,17 +8,21 @@ Page({
     array: ['1%', '2%', '3%', '4%', '5%', '6%', '7%', '8%'],
     valueArray: ['0.01', '0.02', '0.03', '0.04', '0.05', '0.06', '0.07', '0.08'],
     index: 0,
-    disablePicker: true,
-    disableSheBaoCheckInput: true,
-    disableGongJiJinCheckInput: true,
-    gongJiJinCheck: true,
-    hiddenPiChart: true,
+    disable_sb_input: true,
+    disable_gjj_input: true,
+    gjj_check: true,
+    expp_gjj_check: false,
+    hidden_pichart: true,
 
     shuiQianNum: new Number(10000),
-    sheBaoBasicNum: new Number(4279),
-    gongJiJinBasicNum: new Number(2300),
-    buChongGongJiJinPercent: new Number(0),
-    orgAllPay: new Number(0),
+    sb_num: new Number(0),
+    gjj_num: new Number(0),
+    expp_gjj_percent: new Number(0),
+    org_pay: new Number(0),
+    sb_min: new Number(0),
+    gjj_min: new Number(0),
+    sb_max: new Number(0),
+    gjj_max: new Number(0),
 
     items: [
       { orgValue: '', value: '', name: '养老保险金' },
@@ -42,12 +46,84 @@ Page({
       { orgValue: '', value: '', name: '住房租金(1000元)' },
       { orgValue: '', value: '', name: '赡养老人(1000元)' }
     ],
+
+    cityIndex: 0,
+    cityArray: [
+      { name: '北京', enName: 'beijing', sb_min: '3387', sb_max: '25401', gjj_min: '2273', gjj_max: '25401'},
+      { name: '上海', enName: 'shanghai', sb_min: '4279', sb_max: '21396', gjj_min: '2300', gjj_max: '21400'},
+      { name: '天津', enName: 'tianjin', sb_min: '3364', sb_max: '16821', gjj_min: '2050', gjj_max: '24240'},
+      { name: '深圳', enName: 'shenzhen', sb_min: '2200', sb_max: '25044', gjj_min: '2130', gjj_max: '25044' },
+      { name: '杭州', enName: 'hangzhou', sb_min: '3055', sb_max: '15275', gjj_min: '2010', gjj_max: '24311' },
+      { name: '广州', enName: 'guangzhou', sb_min: '2100', sb_max: '99999', gjj_min: '2100', gjj_max: '24654' },
+      { name: '南京', enName: 'nanjing', sb_min: '3030', sb_max: '19935', gjj_min: '1890', gjj_max: '22500'},
+      { name: '济南', enName: 'jinan', sb_min: '3510', sb_max: '17550', gjj_min: '1910', gjj_max: '17550' },
+      { name: '贵阳', enName: 'guiyang', sb_min: '3227', sb_max: '16137', gjj_min: '1400', gjj_max: '33750' },
+      { name: '西安', enName: 'xian', sb_min: '3372', sb_max: '19443', gjj_min: '1680', gjj_max: '19443' },
+      { name: '乌鲁木齐', enName: 'wulumuqi', sb_min: '3019', sb_max: '15096', gjj_min: '1620', gjj_max: '15399' },
+      { name: '福州', enName: 'fuzhou', sb_min: '1800', sb_max: '18783', gjj_min: '1650', gjj_max: '18783' },
+      { name: '石家庄', enName: 'shijiazhuang', sb_min: '3028', sb_max: '99999', gjj_min: '3308', gjj_max: '16539' },
+      { name: '呼和浩特', enName: 'huhehaote', sb_min: '2810', sb_max: '14052', gjj_min: '1760', gjj_max: '15498' },
+      { name: '太原', enName: 'taiyuan', sb_min: '3077', sb_max: '15387', gjj_min: '1625', gjj_max: '16206' },
+      { name: '兰州', enName: 'lanzhou', sb_min: '3287', sb_max: '16431', gjj_min: '1620', gjj_max: '18071' },
+      { name: '郑州', enName: 'zhengzhou', sb_min: '3524', sb_max: '17621', gjj_min: '3524', gjj_max: '17625' },
+      { name: '长沙', enName: 'changsha', sb_min: '2695', sb_max: '13473', gjj_min: '1580', gjj_max: '31950' },
+      { name: '昆明', enName: 'kunming', sb_min: '3676', sb_max: '18378', gjj_min: '1570', gjj_max: '19088' },
+      { name: '武汉', enName: 'wuhan', sb_min: '3400', sb_max: '19921', gjj_min: '1750', gjj_max: '29881' },
+      { name: '沈阳', enName: 'shenyang', sb_min: '66', sb_max: '99999', gjj_min: '1620', gjj_max: '18545' },
+      { name: '南昌', enName: 'nanchang', sb_min: '2807', sb_max: '15774', gjj_min: '1083', gjj_max: '16450' },
+      { name: '合肥', enName: 'hefei', sb_min: '3396', sb_max: '16981', gjj_min: '1520', gjj_max: '20172' },
+      { name: '重庆', enName: 'chongqing', sb_min: '3664', sb_max: '18318', gjj_min: '1500', gjj_max: '18318' },
+      { name: '成都', enName: 'chengdu', sb_min: '2388', sb_max: '17908', gjj_min: '1500', gjj_max: '22302' },
+      { name: '西宁', enName: 'xining', sb_min: '3827', sb_max: '19134', gjj_min: '3827', gjj_max: '19134' },
+      { name: '长春', enName: 'changchun', sb_min: '3606', sb_max: '18410', gjj_min: '2000', gjj_max: '21485' },
+      { name: '哈尔滨', enName: 'haerbin', sb_min: '2787', sb_max: '15646', gjj_min: '1680', gjj_max: '14601' },
+      { name: '银川', enName: 'yinchuan', sb_min: '3392', sb_max: '16957', gjj_min: '1660', gjj_max: '17025' },
+      { name: '海口', enName: 'haikou', sb_min: '3453', sb_max: '17265', gjj_min: '1430', gjj_max: '15508' },
+      { name: '南宁', enName: 'nanning', sb_min: '2834', sb_max: '14171', gjj_min: '1680', gjj_max: '18870' },
+
+    ],
   },
 
   onLoad:function(){
+
+    const cityDict = this.data.cityArray[this.data.cityIndex]
     this.setData({
-      sheBaoBasicNum:this.data.shuiQianNum,
-      gongJiJinBasicNum: this.data.shuiQianNum
+      sb_num: cityDict.sb_min,
+      gjj_num: cityDict.gjj_min,
+
+      sb_min: cityDict.sb_min,
+      sb_max: cityDict.sb_max,
+      gjj_min: cityDict.gjj_min,
+      gjj_max: cityDict.gjj_max,
+    })
+
+  },
+
+  // 选择城市
+  selectCity(e) {
+    var tempIndex = new Number(e.detail.value)
+    if (tempIndex == this.data.cityIndex) {
+      return
+    }
+    const cityDict = this.data.cityArray[tempIndex]
+
+    this.setData ({
+      sb_num: cityDict.sb_min,
+      gjj_num: cityDict.gjj_min,
+
+      cityIndex: tempIndex,
+      sb_min: cityDict.sb_min,
+      sb_max: cityDict.sb_max,
+      gjj_min: cityDict.gjj_min,
+      gjj_max: cityDict.gjj_max,
+
+      index: 0,
+      expp_gjj_check: false,
+      disable_sb_input: true,
+      disable_gjj_input: true,
+      gjj_check: true,
+      hidden_pichart: true,
+      expp_gjj_percent: 0
     })
 
   },
@@ -55,67 +131,67 @@ Page({
   bindPickerChange(e) {
     this.setData({
       index: e.detail.value,
-      buChongGongJiJinPercent: this.data.valueArray[e.detail.value]
+      expp_gjj_percent: this.data.valueArray[e.detail.value]
     })
   },
 
   bindCheckBoxChange(e) {
     this.setData({
-      buChongGongJiJinPercent: this.data.valueArray[this.data.index],
-      disablePicker: !this.data.disablePicker
+      expp_gjj_percent: this.data.valueArray[this.data.index],
+      expp_gjj_check: !this.data.expp_gjj_check
     })
   },
   bindGongJiJinInputCheckBoxChange(e) {
     this.setData({
-      disableGongJiJinCheckInput: !this.data.disableGongJiJinCheckInput
+      disable_gjj_input: !this.data.disable_gjj_input
     })
   },
   bindSheBaoInputCheckBoxChange(e) {
     this.setData({
-      disableSheBaoCheckInput: !this.data.disableSheBaoCheckInput
+      disable_sb_input: !this.data.disable_sb_input
     })
   },
-  bindGongJiJinCheckBoxChange(e) {
+  bindgjj_checkBoxChange(e) {
     this.setData({
-      gongJiJinCheck: !this.data.gongJiJinCheck
+      gjj_check: !this.data.gjj_check
     })
   },
 
   inputShuiQian(e) {
-    var shebao = this.data.sheBaoBasicNum
-    var gongjijin = this.data.gongJiJinBasicNum
-    if (this.data.disableSheBaoCheckInput) {
+    var shebao = this.data.sb_num
+    var gongjijin = this.data.gjj_num
+    if (this.data.disable_sb_input) {
       shebao = e.detail.value
-      if (shebao < 4279) {
-        shebao = 4279;
+      if (shebao < this.data.sb_min) {
+        shebao = this.data.sb_min;
       }
-      if (shebao > 21396) {
-        shebao = 21396;
+      if (shebao > this.data.sb_max) {
+        shebao = this.data.sb_max;
       }
     }
-    if (this.data.disableGongJiJinCheckInput) {
+    if (this.data.disable_gjj_input) {
       gongjijin = e.detail.value
-      if (gongjijin < 2300) {
-        gongjijin = 2300;
+      if (gongjijin < this.data.gjj_min) {
+        gongjijin = this.data.gjj_min;
       }
-      if (gongjijin > 21396) {
-        gongjijin = 21396;
+      if (gongjijin > this.data.gjj_max) {
+        gongjijin = this.data.gjj_max;
       }
     }
     this.setData ({
       shuiQianNum: e.detail.value,
-      sheBaoBasicNum: shebao,
-      gongJiJinBasicNum: gongjijin
+      sb_num: shebao,
+      gjj_num: gongjijin
     })
   },
   inputSheBao(e) {
     this.setData({
-      sheBaoBasicNum: e.detail.value
+      sb_num: e.detail.value
     })
   },
   inputGongJiJin(e) {
     this.setData({
-      gongJiJinBasicNum: e.detail.value
+      gjj_num: e.detail.value
     })
   },
 
@@ -124,14 +200,14 @@ Page({
     if (num > this.data.shuiQianNum) {
       num = this.data.shuiQianNum;
     }
-    if (num < 4279) {
-      num = 4279;
+    if (num < this.data.sb_min) {
+      num = this.data.sb_min;
     }
-    if (num > 21396) {
-      num = 21396;
+    if (num > this.data.sb_max) {
+      num = this.data.sb_max;
     }
     this.setData({
-      sheBaoBasicNum: num
+      sb_num: num
     })
   },
   blurGongJiJin(e) {
@@ -139,14 +215,14 @@ Page({
     if (num > this.data.shuiQianNum) {
       num = this.data.shuiQianNum;
     }
-    if (num < 2300) {
-      num = 2300;
+    if (num < this.data.gjj_min) {
+      num = this.data.gjj_min;
     }
-    if (num > 21396) {
-      num = 21396;
+    if (num > this.data.gjj_max) {
+      num = this.data.gjj_max;
     }
     this.setData({
-      gongJiJinBasicNum: num
+      gjj_num: num
     })
   },
 
@@ -162,11 +238,11 @@ Page({
       data:{
         city: 'shanghai',
         origin_salary: this.data.shuiQianNum,
-        base_3j: this.data.sheBaoBasicNum,
-        base_gjj: this.data.gongJiJinBasicNum,
-        is_gjj: this.data.gongJiJinCheck,
-        is_exgjj: !this.data.disablePicker,
-        factor_exgjj: this.data.buChongGongJiJinPercent
+        base_3j: this.data.sb_num,
+        base_gjj: this.data.gjj_num,
+        is_gjj: this.data.gjj_check,
+        is_exgjj: this.data.expp_gjj_check,
+        factor_exgjj: this.data.expp_gjj_percent
       },
       header: {
         'content-type': 'application/json' // 默认值
@@ -189,8 +265,8 @@ Page({
             item.value = parseInt(res.data.personal_gjj).toFixed() + '   ' + '(7%)'
             item.orgValue = parseInt(res.data.org_gjj).toFixed() + '   ' + '(7%)'
           } else if (i == 4) {
-            item.value = parseInt(res.data.personal_exgjj).toFixed() + '   ' + '(' + self.data.buChongGongJiJinPercent*100 + '%)'
-            item.orgValue = parseInt(res.data.org_exgjj).toFixed() + '   ' + '(' + self.data.buChongGongJiJinPercent * 100 + '%)'
+            item.value = parseInt(res.data.personal_exgjj).toFixed() + '   ' + '(' + self.data.expp_gjj_percent*100 + '%)'
+            item.orgValue = parseInt(res.data.org_exgjj).toFixed() + '   ' + '(' + self.data.expp_gjj_percent * 100 + '%)'
           } else if (i == 5) {
             item.orgValue = parseInt(res.data.org_gongshang).toFixed() + '   ' + '(0.2%)'
           } else if (i == 6) {
@@ -212,7 +288,7 @@ Page({
 
         self.setData({
           items: datadict,
-          hiddenPiChart: false
+          hidden_pichart: false
         })
 
         self.createPieChart(res.data)
@@ -276,7 +352,7 @@ Page({
     var orgTotalPay = new Number(e.org_allpay)
     orgTotalPay += this.data.shuiQianNum
     this.setData({
-      orgAllPay: orgTotalPay
+      org_pay: orgTotalPay
     })
 
     try {
