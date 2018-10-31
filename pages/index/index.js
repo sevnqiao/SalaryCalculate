@@ -7,25 +7,6 @@ Page({
   data: {
     array: ['1%', '2%', '3%', '4%', '5%', '6%', '7%', '8%'],
     valueArray: ['0.01', '0.02', '0.03', '0.04', '0.05', '0.06', '0.07', '0.08'],
-
-
-    cityArray: [{ value: 'beijing', name: '北京'},
-                { value: 'shanghai', name: '上海' },
-                { value: 'guangzhou', name: '广州' },
-                { value: 'shenzhen', name: '深圳' },
-                { value: 'nanjing', name: '南京' },
-                { value: 'hangzhou', name: '杭州' },
-                { value: 'wuhan', name: '武汉' },
-                { value: 'chongqing', name: '重庆' },
-                { value: 'beijing', name: '北京' },
-                { value: 'beijing', name: '北京' }],
-
-
-
-
-
-
-
     index: 0,
     disablePicker: true,
     disableSheBaoCheckInput: true,
@@ -33,10 +14,10 @@ Page({
     gongJiJinCheck: true,
 
     shuiQianNum: new Number(10000),
-    sheBaoBasicNum:4279,
-    gongJiJinBasicNum:2300,
-    buChongGongJiJinPercent:0,
-    orgAllPay:0,
+    sheBaoBasicNum: new Number(4279),
+    gongJiJinBasicNum: new Number(2300),
+    buChongGongJiJinPercent: new Number(0),
+    orgAllPay: new Number(0),
 
     items: [
       { orgValue: '', value: '', name: '养老保险金' },
@@ -96,8 +77,30 @@ Page({
   },
 
   inputShuiQian(e) {
+    var shebao = this.data.sheBaoBasicNum
+    var gongjijin = this.data.gongJiJinBasicNum
+    if (this.data.disableSheBaoCheckInput) {
+      shebao = e.detail.value
+      if (shebao < 4279) {
+        shebao = 4279;
+      }
+      if (shebao > 21396) {
+        shebao = 21396;
+      }
+    }
+    if (this.data.disableGongJiJinCheckInput) {
+      gongjijin = e.detail.value
+      if (gongjijin < 2300) {
+        gongjijin = 2300;
+      }
+      if (gongjijin > 21396) {
+        gongjijin = 21396;
+      }
+    }
     this.setData ({
-      shuiQianNum: e.detail.value
+      shuiQianNum: e.detail.value,
+      sheBaoBasicNum: shebao,
+      gongJiJinBasicNum: gongjijin
     })
   },
   inputSheBao(e) {
@@ -112,7 +115,7 @@ Page({
   },
 
   blurSheBao(e) {
-    var num = e.detail.value
+    var num = new Number(e.detail.value)
     if (num > this.data.shuiQianNum) {
       num = this.data.shuiQianNum;
     }
@@ -127,7 +130,7 @@ Page({
     })
   },
   blurGongJiJin(e) {
-    var num = e.detail.value
+    var num = new Number(e.detail.value)
     if (num > this.data.shuiQianNum) {
       num = this.data.shuiQianNum;
     }
