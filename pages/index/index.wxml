@@ -51,14 +51,22 @@
     </view>
   </view>  
 
-  <!-- 抵扣细则 -->
+  <!-- 专项附加扣除 -->
+  <view class="options">
+  <view class='common-title'>专项附加扣除</view>
+  <view class='line-margin'></view>
+  <view class='common-title'>此模块待19年政策发布后再更新</view>
+<!-- 
+  <checkbox-group class="option-checkbox common-title" style="width:100%" bindchange="bindGongJiJinCheckBoxChange">
+    <label class="common-title" wx:for="{{additionArray}}" wx:key="{{item.value}}">
+      <checkbox value="{{item.value}}" checked="{{item.checked}}" style="margin-right:20rpx">{{item.name}}</checkbox>
+    </label>
+  </checkbox-group> -->
 
-
-
-
+  </view>
 
   <!-- 表格 -->
-  <view class='history-table-wrap'>
+  <view class='history-table-wrap' hidden="{{hiddenPiChart}}">
     <view class="table">
       <view class="tr">
           <view class="th th1"></view>
@@ -75,14 +83,14 @@
 
   <!-- 饼状图分析 -->
 
-  <view class='options'>
+  <view class='options' hidden="{{hiddenPiChart}}">
     <view class="common-title">税前工资去向（共¥ {{shuiQianNum}}）</view>
     <view class="chart-container">
       <canvas canvas-id="pieCanvas" class="chart-canvas"></canvas>
     </view>
   </view>
 
-  <view class='options'>
+  <view class='options' hidden="{{hiddenPiChart}}">
     <view class="common-title">单位成本去向（共¥ {{orgAllPay}}）</view>
     <view class="chart-container">
       <canvas canvas-id="orgPieCanvas" class="chart-canvas"></canvas>

@@ -12,6 +12,7 @@ Page({
     disableSheBaoCheckInput: true,
     disableGongJiJinCheckInput: true,
     gongJiJinCheck: true,
+    hiddenPiChart: true,
 
     shuiQianNum: new Number(10000),
     sheBaoBasicNum: new Number(4279),
@@ -32,6 +33,15 @@ Page({
       { orgValue: '', value: '', name: '个人所得税' },
       { orgValue: '', value: '', name: '税后月薪' }
     ],
+
+    additionArray: [
+      { orgValue: '', value: '', name: '子女教育(1000元)' },
+      { orgValue: '', value: '', name: '继续教育(1000元)' },
+      { orgValue: '', value: '', name: '大病医疗(1000元)' },
+      { orgValue: '', value: '', name: '住房贷款利息(1000元)' },
+      { orgValue: '', value: '', name: '住房租金(1000元)' },
+      { orgValue: '', value: '', name: '赡养老人(1000元)' }
+    ],
   },
 
   onLoad:function(){
@@ -39,11 +49,6 @@ Page({
       sheBaoBasicNum:this.data.shuiQianNum,
       gongJiJinBasicNum: this.data.shuiQianNum
     })
-
-    //
-
-
-
 
   },
 
@@ -206,7 +211,8 @@ Page({
         // console.log('picker发送选择改变，携带值为', self.data.items)
 
         self.setData({
-          items: datadict
+          items: datadict,
+          hiddenPiChart: false
         })
 
         self.createPieChart(res.data)
