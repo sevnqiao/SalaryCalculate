@@ -191,22 +191,23 @@ Page({
   },
   // 输入税前工资
   inputShuiQian(e) {
-    var shebao = this.data.sb_num
-    var gongjijin = this.data.gjj_num
+    var shebao = 0
+    var gongjijin = 0
     if (this.data.disable_sb_input) {
-      shebao = e.detail.value
+      shebao = Number(e.detail.value)
       if (shebao < this.data.sb_min) {
-        shebao = this.data.sb_min;
+        console.log('asdasdasd')
+        shebao = this.data.sb_min
       } else if (shebao > this.data.sb_max) {
-        shebao = this.data.sb_max;
+        shebao = this.data.sb_max
       }
     }
     if (this.data.disable_gjj_input) {
-      gongjijin = e.detail.value
+      gongjijin = Number(e.detail.value)
       if (gongjijin < this.data.gjj_min) {
-        gongjijin = this.data.gjj_min;
+        gongjijin = this.data.gjj_min
       } else if (gongjijin > this.data.gjj_max) {
-        gongjijin = this.data.gjj_max;
+        gongjijin = this.data.gjj_max
       }
     }
     this.setData ({
