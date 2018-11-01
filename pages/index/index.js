@@ -375,8 +375,7 @@ Page({
   },
   createOrgPieChart: function (e) {
     var windowWidth = 320
-    var orgTotalPay = new Number(e.org_allpay)
-    orgTotalPay += this.data.shuiQianNum
+    var orgTotalPay = Number(e.org_allpay) + this.data.shuiQianNum
     this.setData({
       org_pay: orgTotalPay
     })
