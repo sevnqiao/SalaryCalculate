@@ -313,6 +313,12 @@ Page({
 
         self.createPieChart(res.data)
         self.createOrgPieChart(res.data)
+
+        wx.reportAnalytics('input_salary', {
+          salarynum: self.data.shuiQianNum,
+          salary_after_tax_num: res.data.final_salary,
+        });
+
       },
       fail() {
         wx.hideLoading()
