@@ -69,6 +69,7 @@ Page({
 
     // 城市数据
     cityIndex: 0,
+    current_city: 'beijing',
     cityArray: [
       { name: '北京', enName: 'beijing', sb_min: '3387', sb_max: '25401', gjj_min: '2273', gjj_max: '25401'},
       { name: '上海', enName: 'shanghai', sb_min: '4279', sb_max: '21396', gjj_min: '2300', gjj_max: '21400'},
@@ -116,6 +117,8 @@ Page({
       sb_max: cityDict.sb_max,
       gjj_min: cityDict.gjj_min,
       gjj_max: cityDict.gjj_max,
+
+      current_city: cityDict.enName,
     })
 
   },
@@ -133,6 +136,8 @@ Page({
       gjj_num: cityDict.gjj_min,
 
       cityIndex: tempIndex,
+      current_city: cityDict.enName,
+
       sb_min: cityDict.sb_min,
       sb_max: cityDict.sb_max,
       gjj_min: cityDict.gjj_min,
@@ -192,8 +197,7 @@ Page({
       shebao = e.detail.value
       if (shebao < this.data.sb_min) {
         shebao = this.data.sb_min;
-      }
-      if (shebao > this.data.sb_max) {
+      } else if (shebao > this.data.sb_max) {
         shebao = this.data.sb_max;
       }
     }
@@ -201,8 +205,7 @@ Page({
       gongjijin = e.detail.value
       if (gongjijin < this.data.gjj_min) {
         gongjijin = this.data.gjj_min;
-      }
-      if (gongjijin > this.data.gjj_max) {
+      } else if (gongjijin > this.data.gjj_max) {
         gongjijin = this.data.gjj_max;
       }
     }
@@ -217,11 +220,9 @@ Page({
     var num = new Number(e.detail.value)
     if (num > this.data.shuiQianNum) {
       num = this.data.shuiQianNum;
-    }
-    if (num < this.data.sb_min) {
+    } else if (num < this.data.sb_min) {
       num = this.data.sb_min;
-    }
-    if (num > this.data.sb_max) {
+    } else if (num > this.data.sb_max) {
       num = this.data.sb_max;
     }
     this.setData({
@@ -233,11 +234,9 @@ Page({
     var num = new Number(e.detail.value)
     if (num > this.data.shuiQianNum) {
       num = this.data.shuiQianNum;
-    }
-    if (num < this.data.gjj_min) {
+    } else if (num < this.data.gjj_min) {
       num = this.data.gjj_min;
-    }
-    if (num > this.data.gjj_max) {
+    } else if (num > this.data.gjj_max) {
       num = this.data.gjj_max;
     }
     this.setData({
@@ -256,7 +255,7 @@ Page({
     wx.request({
       url: 'https://salarycalculator.sinaapp.com/calculate',
       data:{
-        city: 'shanghai',
+        city: this.data.current_city,
         origin_salary: this.data.shuiQianNum,
         base_3j: this.data.sb_num,
         base_gjj: this.data.gjj_num,
@@ -273,35 +272,35 @@ Page({
         for (let i = 0, lenI = datadict.length; i < lenI; ++i) {
           const item = datadict[i]
           if (i==0){
-            item.value = parseInt(res.data.personal_yanglao).toFixed() + '   ' + '(8%)'
-            item.orgValue = parseInt(res.data.org_yanglao).toFixed() + '   ' + '(20%)'
+            item.value =  res.data.personal_yanglao + '(' + (res.data.personal_yanglao / self.data.sb_num * 100).toFixed() + '%)'
+            item.orgValue =  res.data.org_yanglao + '(' + (res.data.org_yanglao / self.data.sb_num * 100).toFixed() + '%)'
           } else if (i == 1) {
-            item.value = parseInt(res.data.personal_yiliao).toFixed() + '   ' + '(2%)'
-            item.orgValue = parseInt(res.data.org_yiliao).toFixed() + '   ' + '(9.5%)'
+            item.value =  res.data.personal_yiliao + '(' + (res.data.personal_yiliao / self.data.sb_num * 100).toFixed(1) + '%)'
+            item.orgValue =  res.data.org_yiliao + '(' + (res.data.org_yiliao / self.data.sb_num * 100).toFixed(1) + '%)'
           } else if (i == 2) {
-            item.value = parseInt(res.data.personal_shiye).toFixed() + '   ' + '(0.5%)'
-            item.orgValue = parseInt(res.data.org_shiye).toFixed() + '   ' + '(0.5%)'
+            item.value =  res.data.personal_shiye  + '(' + (res.data.personal_shiye / self.data.sb_num * 100).toFixed(1) + '%)'
+            item.orgValue =  res.data.org_shiye  + '(' + (res.data.org_shiye / self.data.sb_num * 100).toFixed(1) + '%)'
           } else if (i == 3) {
-            item.value = parseInt(res.data.personal_gjj).toFixed() + '   ' + '(7%)'
-            item.orgValue = parseInt(res.data.org_gjj).toFixed() + '   ' + '(7%)'
+            item.value =  res.data.personal_gjj  + '(' + (res.data.personal_gjj / self.data.gjj_num * 100).toFixed() + '%)'
+            item.orgValue =  res.data.org_gjj  + '(' + (res.data.org_gjj / self.data.gjj_num * 100).toFixed() + '%)'
           } else if (i == 4) {
-            item.value = parseInt(res.data.personal_exgjj).toFixed() + '   ' + '(' + self.data.expp_gjj_percent*100 + '%)'
-            item.orgValue = parseInt(res.data.org_exgjj).toFixed() + '   ' + '(' + self.data.expp_gjj_percent * 100 + '%)'
+            item.value =  res.data.personal_exgjj  + '(' + self.data.expp_gjj_percent*100 + '%)'
+            item.orgValue =  res.data.org_exgjj   + '(' + self.data.expp_gjj_percent * 100 + '%)'
           } else if (i == 5) {
-            item.orgValue = parseInt(res.data.org_gongshang).toFixed() + '   ' + '(0.2%)'
+            item.orgValue = res.data.org_gongshang + '(' + (res.data.org_gongshang / self.data.sb_num * 100).toFixed(2) + '%)'
           } else if (i == 6) {
-            item.orgValue = parseInt(res.data.org_shengyu).toFixed() + '   ' + '(1%)'
+            item.orgValue = res.data.org_shengyu + '(' + (res.data.org_shengyu / self.data.sb_num * 100).toFixed(2) + '%)'
           } else if (i == 7) {
-            item.value = parseInt(res.data.personal_allpay).toFixed()
-            item.orgValue = parseInt(res.data.org_allpay).toFixed()
+            item.value =  res.data.personal_allpay
+            item.orgValue =  res.data.org_allpay
           } else if (i == 8) {
-            item.value = parseInt(res.data.before_tax).toFixed()
+            item.value =  res.data.before_tax
           } else if (i == 9) {
-            item.value = parseInt(res.data.tax).toFixed()
-            item.orgValue = parseInt(res.data.old_tax).toFixed() + '(老税法)'
+            item.value =  res.data.tax
+            item.orgValue =  res.data.old_tax + '(老税法)'
           } else if (i == 10) {
-            item.value = parseInt(res.data.final_salary).toFixed()
-            item.orgValue = parseInt(res.data.old_final_salary).toFixed() +'(老税法)'
+            item.value =  res.data.final_salary
+            item.orgValue =  res.data.old_final_salary +'(老税法)'
           }
         }
         // console.log('picker发送选择改变，携带值为', self.data.items)
