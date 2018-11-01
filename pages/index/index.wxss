@@ -20,7 +20,17 @@
 .line-margin {
   margin-top: 5px;
 }
-
+.city-select {
+  display:flex;
+  float:right;
+  width:100rpx;
+  background-color: #ddd;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4rpx;
+  color: #b66242;
+  font-size: 15px;
+}
 /*  */
 .common-title-unit {
   text-align: center;
@@ -65,8 +75,9 @@
 .picker-input {
   float: right;
   background-color: #ddd;
-  width: 50px;
+  width: 100rpx;
   text-align: center;
+  border-radius: 4rpx;
 }
 
 .margin-left{

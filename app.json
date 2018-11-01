@@ -5,7 +5,7 @@
   "window": {
     "backgroundTextStyle": "black",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "税后工资计算器",
+    "navigationBarTitleText": "2019新版税后工资计算器",
     "navigationBarTextStyle": "black"
   },
   "networkTimeout": {

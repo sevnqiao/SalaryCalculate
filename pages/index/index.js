@@ -5,25 +5,44 @@ const app = getApp();
 var pieChart = null;
 Page({
   data: {
-    array: ['1%', '2%', '3%', '4%', '5%', '6%', '7%', '8%'],
-    valueArray: ['0.01', '0.02', '0.03', '0.04', '0.05', '0.06', '0.07', '0.08'],
-    index: 0,
-    disable_sb_input: true,
-    disable_gjj_input: true,
-    gjj_check: true,
-    expp_gjj_check: false,
-    hidden_pichart: true,
+    // 禁止社保基数输入
+    disable_sb_input: Boolean(true),
+    // 禁止公积金基数输入
+    disable_gjj_input: Boolean(true),
+    // 是否缴纳公积金
+    gjj_check: Boolean(true),
+    // 是否缴纳补充公积金
+    expp_gjj_check: Boolean(false),
+    // 是否隐藏底部饼状图
+    hidden_pichart: Boolean(true),
+    // 税前工资
+    shuiQianNum: Number(10000),
+    // 社保相关
+    sb_num: Number(0),
+    sb_min: Number(0),
+    sb_max: Number(0),
+    // 公积金相关
+    gjj_num: Number(0),
+    gjj_min: Number(0),
+    gjj_max: Number(0),
+    // 记录企业总支出
+    org_pay: Number(0),
 
-    shuiQianNum: new Number(10000),
-    sb_num: new Number(0),
-    gjj_num: new Number(0),
-    expp_gjj_percent: new Number(0),
-    org_pay: new Number(0),
-    sb_min: new Number(0),
-    gjj_min: new Number(0),
-    sb_max: new Number(0),
-    gjj_max: new Number(0),
+    // 补充公积金
+    expp_gjj_index: Number(0),
+    expp_gjj_percent: Number(0),
+    expp_gjj_percent_array: [
+      { name: '1%', value: '0.01' },
+      { name: '2%', value: '0.02' },
+      { name: '3%', value: '0.03' },
+      { name: '4%', value: '0.04' },
+      { name: '5%', value: '0.05' },
+      { name: '6%', value: '0.06' },
+      { name: '7%', value: '0.07' },
+      { name: '8%', value: '0.08' }
+    ],
 
+    // 扣除项目
     items: [
       { orgValue: '', value: '', name: '养老保险金' },
       { orgValue: '', value: '', name: '医疗保险金' },
@@ -38,6 +57,7 @@ Page({
       { orgValue: '', value: '', name: '税后月薪' }
     ],
 
+    // 附加抵扣项
     additionArray: [
       { orgValue: '', value: '', name: '子女教育(1000元)' },
       { orgValue: '', value: '', name: '继续教育(1000元)' },
@@ -47,6 +67,7 @@ Page({
       { orgValue: '', value: '', name: '赡养老人(1000元)' }
     ],
 
+    // 城市数据
     cityIndex: 0,
     cityArray: [
       { name: '北京', enName: 'beijing', sb_min: '3387', sb_max: '25401', gjj_min: '2273', gjj_max: '25401'},
@@ -117,7 +138,7 @@ Page({
       gjj_min: cityDict.gjj_min,
       gjj_max: cityDict.gjj_max,
 
-      index: 0,
+      expp_gjj_index: 0,
       expp_gjj_check: false,
       disable_sb_input: true,
       disable_gjj_input: true,
@@ -128,35 +149,42 @@ Page({
 
   },
 
+  // 选择补充公积金picker
   bindPickerChange(e) {
+    const index = new Number(e.detail.value)
+    const exppDict = this.data.expp_gjj_percent_array[index]
     this.setData({
-      index: e.detail.value,
-      expp_gjj_percent: this.data.valueArray[e.detail.value]
+      expp_gjj_index: index,
+      expp_gjj_percent: exppDict.value
     })
   },
-
+  // 勾选补充公积金
   bindCheckBoxChange(e) {
+    const exppDict = this.data.expp_gjj_percent_array[this.data.expp_gjj_index]
     this.setData({
-      expp_gjj_percent: this.data.valueArray[this.data.index],
+      expp_gjj_percent: exppDict.value,
       expp_gjj_check: !this.data.expp_gjj_check
     })
   },
+  // 勾选是否自定义公积金基数
   bindGongJiJinInputCheckBoxChange(e) {
     this.setData({
       disable_gjj_input: !this.data.disable_gjj_input
     })
   },
+  // 勾选是否自定义社保基数
   bindSheBaoInputCheckBoxChange(e) {
     this.setData({
       disable_sb_input: !this.data.disable_sb_input
     })
   },
-  bindgjj_checkBoxChange(e) {
+  // 勾选是否缴纳公积金
+  bindGongJiJinCheckBoxChange(e) {
     this.setData({
       gjj_check: !this.data.gjj_check
     })
   },
-
+  // 输入税前工资
   inputShuiQian(e) {
     var shebao = this.data.sb_num
     var gongjijin = this.data.gjj_num
@@ -184,17 +212,7 @@ Page({
       gjj_num: gongjijin
     })
   },
-  inputSheBao(e) {
-    this.setData({
-      sb_num: e.detail.value
-    })
-  },
-  inputGongJiJin(e) {
-    this.setData({
-      gjj_num: e.detail.value
-    })
-  },
-
+  // 社保基数修改完成事件
   blurSheBao(e) {
     var num = new Number(e.detail.value)
     if (num > this.data.shuiQianNum) {
@@ -210,6 +228,7 @@ Page({
       sb_num: num
     })
   },
+  // 公积金基数修改完成事件
   blurGongJiJin(e) {
     var num = new Number(e.detail.value)
     if (num > this.data.shuiQianNum) {
@@ -226,6 +245,7 @@ Page({
     })
   },
 
+  // 计算税后工资
   caclulate(e) {
     const self = this
 
@@ -300,7 +320,7 @@ Page({
     })
 
   },
-
+  // 绘制底部饼状图
   createPieChart: function (e){
     var windowWidth = 320;
     try {

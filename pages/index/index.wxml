@@ -3,8 +3,12 @@
 <view class="container">
   <view class='salary'>
     <picker bindchange="selectCity" value="{{cityIndex}}" range="{{cityArray}}" range-key="{{'name'}}">
-        <view class="picker-input common-title">{{cityArray[cityIndex].name}}</view>
+      <view class='city-select'>
+        <view>{{cityArray[cityIndex].name}}</view>
+        <image style="width: 30rpx; height: 30rpx;" src='../../resources/arraw_bottom.png'></image>
+      </view>
     </picker>
+    
     <view class='common-title margin-left'>税前工资:</view>
     <view class='border option-item'>
       <view class='common-title-unit'>¥</view>
@@ -21,7 +25,7 @@
     <view class='option-item'>
       <view class='common-title'>社保汇缴基数:</view>
       <view class='option-item option-right-item'>
-        <input class="option-input border" disabled="{{disable_sb_input}}" type='digit' bindinput='inputSheBao' bindblur="blurSheBao" value='{{sb_num}}'></input> 
+        <input class="option-input border" disabled="{{disable_sb_input}}" type='digit' bindblur="blurSheBao" value='{{sb_num}}'></input> 
         <checkbox-group class="option-checkbox margin-left" bindchange="bindSheBaoInputCheckBoxChange">
              <checkbox checked='{{!disable_sb_input}}'>自定义</checkbox>
           </checkbox-group>
@@ -31,7 +35,7 @@
     <view class='option-item'>
       <view class='common-title'>公积金汇缴基数:</view>
       <view class='option-item option-right-item'>
-        <input class="option-input border" disabled="{{disable_gjj_input}}" type='digit' bindinput='inputGongJiJin' bindblur="blurGongJiJin" value='{{gjj_num}}'> </input> 
+        <input class="option-input border" disabled="{{disable_gjj_input}}" type='digit' bindblur="blurGongJiJin" value='{{gjj_num}}'> </input> 
         <checkbox-group class="option-checkbox margin-left" bindchange="bindGongJiJinInputCheckBoxChange">
            <checkbox checked='{{!disable_gjj_input}}'>自定义</checkbox>
         </checkbox-group>
@@ -48,8 +52,8 @@
     <view class='line-margin'></view>
     <view class='option-item'>
       <view class="common-title">单位与个人汇缴比例：</view>
-      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" disabled="{{!expp_gjj_check}}">
-        <view class="picker-input">{{array[index]}}</view>
+      <picker bindchange="bindPickerChange" value="{{expp_gjj_index}}" range="{{expp_gjj_percent_array}}" range-key="{{'name'}}" disabled="{{!expp_gjj_check}}">
+        <view class="picker-input">{{expp_gjj_percent_array[expp_gjj_index].name}}</view>
       </picker>
     </view>
   </view>  
