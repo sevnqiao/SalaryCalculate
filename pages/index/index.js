@@ -473,5 +473,13 @@ Page({
             height: 300,
             dataLabel: true,
         })
+    },
+    navgationToTaxCaculate() {
+
+
+        wx.navigateTo({
+            url: 'tax/index?taxRateData=' + JSON.stringify(this.data.taxRateData) + '&oldTaxRateData=' + JSON.stringify(this.data.oldTaxRateData),
+            type: "redirect",
+        })
     }
 })

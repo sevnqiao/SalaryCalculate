@@ -1,0 +1,43 @@
+<!--pages/tax/index.wxml-->
+<view class='common-title'>
+    税后工资 = (税前工资 - 五险一金 - 起征点 - 附加扣除项) * 税率 - 速算扣除数
+</view>
+<view class='history-table-wrap'>
+    <view class="table">
+        <view class="tr">
+            <view class="th th1">级数</view>
+            <view class="th th2">含税级距(新版)</view>
+            <view class="th th3">税率税率(新版)</view>
+            <view class="th th4">速算扣除数(新版)</view>
+        </view>
+        <view class="tr" wx:for="{{taxRateData}}" wx:key="item">
+            <view class="td td1">{{index + 1}}</view>
+            <view class="td td2">{{item.minRateMoney}}  ~  {{item.maxRateMoney}}</view>
+            <view class="td td3">{{item.rateText}}</view>
+            <view class="td td4">{{item.rapid}}</view>
+        </view>
+    </view>
+    
+</view>
+
+<view class='common-title'>
+    税后工资 = (税前工资 - 五险一金 - 起征点) * 税率 - 速算扣除数
+</view>
+<view class='history-table-wrap'>
+    <view class="table">
+        <view class="tr">
+            <view class="th th1">级数</view>
+            <view class="th th2">含税级距(旧版)</view>
+            <view class="th th3">税率税率(旧版)</view>
+            <view class="th th4">速算扣除数(旧版)</view>
+        </view>
+        <view class="tr" wx:for="{{oldTaxRateData}}" wx:key="item">
+            <view class="td td1">{{index + 1}}</view>
+            <view class="td td2">{{item.minRateMoney}}  ~  {{item.maxRateMoney}}</view>
+            <view class="td td3">{{item.rateText}}</view>
+            <view class="td td4">{{item.rapid}}</view>
+        </view>
+    </view>
+</view>
+
+

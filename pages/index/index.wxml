@@ -112,7 +112,8 @@
         </view>
     </view>
 
-
-
-
+    <view class='options' bindtap='navgationToTaxCaculate' style='display:flex;just-content:space-between'>
+        <view class="common-title"> 查看税率计算公式</view>
+        <image src='/resources/arraw_bottom.png' style='width:20px;height:20px; transform:rotate(-90deg);'></image>
+    </view>
 </view>

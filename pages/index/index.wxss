@@ -11,7 +11,7 @@
 }
 .button{
   height: 26px;
-  width: 120px;
+  width: 150px;
   margin-left: 10px;
   color: #fff;
   background-color: #b66242;
@@ -68,7 +68,7 @@
   float: right;
 }
 .option-checkbox{
-  width: 150px;
+  width: 180px;
   zoom: 60%;
 }
 .picker-input {
@@ -121,17 +121,13 @@
   text-align: center;
   width: 100%;
 }
-.th1,.td1{
-  width: 40%;
-}
-.th2,.td2{
-  width: 66%;
-}
+
 .th{
   font-weight: 800;
   background-color: #b66242;
   font-size: 28rpx;
   color: white;
+  text-align: center;
 }
 .td{
   font-size: 20rpx;
