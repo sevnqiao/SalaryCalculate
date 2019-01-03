@@ -284,6 +284,18 @@ Page({
 
     caclulateAfterRateMoney(e) {
 
+        wx.showLoading({
+            title: '计算中...',
+        })
+        const self = this
+        var random = Math.random() * (800 - 200 + 1) + 200
+        setTimeout(function () {
+            wx.hideLoading()
+            self.caclulate()
+        }, random) 
+    },
+
+    caclulate(e) {
         const city = this.data.cityArray[this.data.cityIndex]
         var ee = {}
 
