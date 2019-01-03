@@ -22,8 +22,7 @@
 }
 .city-select {
   display:flex;
-  float:right;
-  width:100rpx;
+  width:150rpx;
   background-color: #ddd;
   align-items: center;
   justify-content: center;
@@ -73,16 +72,25 @@
   zoom: 60%;
 }
 .picker-input {
-  float: right;
+  /* float: right; */
   background-color: #ddd;
   width: 100rpx;
   text-align: center;
   border-radius: 4rpx;
+  align-self: flex-start
 }
 
 .margin-left{
   margin-left: 20rpx; 
 }
+
+/* 附加扣除 */
+.addition{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
 
 /* 表格 */
 .history-table-wrap{
