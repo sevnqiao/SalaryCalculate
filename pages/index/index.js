@@ -13,7 +13,7 @@ Page({
         gjj_check: Boolean(true),
         // 是否缴纳补充公积金
         expp_gjj_check: Boolean(false),
-        // 是否隐藏底部饼状图
+        // 是否隐藏底部饼状
         hidden_pichart: Boolean(true),
         // 税前工资
         shuiQianNum: Number(10000),
@@ -21,7 +21,7 @@ Page({
         sb_num: Number(0),
         sb_min: Number(0),
         sb_max: Number(0),
-        // 公积金相关
+        // 公积金相
         gjj_num: Number(0),
         gjj_min: Number(0),
         gjj_max: Number(0),
@@ -211,29 +211,8 @@ Page({
     },
     // 输入税前工资
     inputShuiQian(e) {
-        var shebao = 0
-        var gongjijin = 0
-        if (this.data.disable_sb_input) {
-            shebao = Number(e.detail.value)
-            if (shebao < this.data.sb_min) {
-                console.log('asdasdasd')
-                shebao = this.data.sb_min
-            } else if (shebao > this.data.sb_max) {
-                shebao = this.data.sb_max
-            }
-        }
-        if (this.data.disable_gjj_input) {
-            gongjijin = Number(e.detail.value)
-            if (gongjijin < this.data.gjj_min) {
-                gongjijin = this.data.gjj_min
-            } else if (gongjijin > this.data.gjj_max) {
-                gongjijin = this.data.gjj_max
-            }
-        }
         this.setData({
             shuiQianNum: Number(e.detail.value),
-            sb_num: shebao,
-            gjj_num: gongjijin
         })
     },
     // 社保基数修改完成事件
@@ -283,7 +262,6 @@ Page({
 
 
     caclulateAfterRateMoney(e) {
-
         wx.showLoading({
             title: '计算中...',
         })
@@ -319,60 +297,67 @@ Page({
 
         // 新税法  扣税  税后工资
         ee['before_tax'] = this.data.shuiQianNum - 5000 - ee.total_personal - this.data.additionTotal
+        if (ee.before_tax < 0) {
+            ee.before_tax = 0
+        }
+        ee['tax'] = 0
         for (let i = 0; i < this.data.taxRateData.length; ++i) {
             const taxRate = this.data.taxRateData[i]
             if (ee.before_tax > taxRate.minRateMoney && ee.before_tax <= taxRate.maxRateMoney) {
-                ee['tax'] = ee.before_tax * taxRate.rate - taxRate.rapid
+                ee['tax'] = Number(ee.before_tax * taxRate.rate - taxRate.rapid)
             }
         }
         ee['final_salary'] = this.data.shuiQianNum - ee.total_personal - ee.tax
 
         // 老税法  扣税  税后工资
         ee['old_before_tax'] = this.data.shuiQianNum - 3500 - ee.total_personal
+        if (ee.old_before_tax < 0) {
+            ee.old_before_tax = 0
+        }
+        ee['old_tax'] = 0
         for (let i = 0; i < this.data.oldTaxRateData.length; ++i) {
             const taxRate = this.data.oldTaxRateData[i]
             if (ee.old_before_tax > taxRate.minRateMoney && ee.old_before_tax <= taxRate.maxRateMoney) {
-                ee['old_tax'] = ee.old_before_tax * taxRate.rate - taxRate.rapid
+                ee['old_tax'] = Number(ee.old_before_tax * taxRate.rate - taxRate.rapid)
             }
         }
         ee['old_final_salary'] = this.data.shuiQianNum - ee.total_personal - ee.old_tax
-
 
         const datadict = this.data.items
         for (let i = 0, lenI = datadict.length; i < lenI; ++i) {
             const item = datadict[i]
             if (i == 0) {
-                item.value = ee.yaonglao_personal.toFixed() + '(' + city.yanglao_personal_rate * 100 + '%)'
-                item.orgValue = ee.yaonglao_company.toFixed() + '(' + (city.yanglao_company_rate * 100).toFixed() + '%)'
+                item.value = ee.yaonglao_personal.toFixed(0) + '(' + city.yanglao_personal_rate * 100 + '%)'
+                item.orgValue = ee.yaonglao_company.toFixed(0) + '(' + (city.yanglao_company_rate * 100).toFixed() + '%)'
             } else if (i == 1) {
-                item.value = ee.yiliao_personal.toFixed() + '(' + (city.yiliao_personal_rate * 100).toFixed(1) + '%)'
-                item.orgValue = ee.yiliao_company.toFixed() + '(' + (city.yiliao_company_rate* 100).toFixed(1) + '%)'
+                item.value = ee.yiliao_personal.toFixed(0) + '(' + (city.yiliao_personal_rate * 100).toFixed(1) + '%)'
+                item.orgValue = ee.yiliao_company.toFixed(0) + '(' + (city.yiliao_company_rate* 100).toFixed(1) + '%)'
             } else if (i == 2) {
-                item.value = ee.shiye_personal.toFixed() + '(' + (city.sy_personal_rate * 100).toFixed(1) + '%)'
-                item.orgValue = ee.shiye_company.toFixed() + '(' + (city.sy_company_rate * 100).toFixed(1) + '%)'
+                item.value = ee.shiye_personal.toFixed(0) + '(' + (city.sy_personal_rate * 100).toFixed(1) + '%)'
+                item.orgValue = ee.shiye_company.toFixed(0) + '(' + (city.sy_company_rate * 100).toFixed(1) + '%)'
             } else if (i == 3) {
-                item.value = ee.gjj_personal.toFixed() + '(' + (city.gjj_personal_rate * 100).toFixed() + '%)'
-                item.orgValue = ee.gjj_company.toFixed() + '(' + (city.gjj_company_rate* 100).toFixed() + '%)'
+                item.value = ee.gjj_personal.toFixed(0) + '(' + (city.gjj_personal_rate * 100).toFixed() + '%)'
+                item.orgValue = ee.gjj_company.toFixed(0) + '(' + (city.gjj_company_rate * 100).toFixed() + '%)'
             } else if (i == 4) {
-                item.value = ee.expp_gjj_personal.toFixed() + '(' + this.data.expp_gjj_percent * 100 + '%)'
-                item.orgValue = ee.expp_gjj_company.toFixed() + '(' + this.data.expp_gjj_percent * 100 + '%)'
+                item.value = ee.expp_gjj_personal.toFixed(0) + '(' + this.data.expp_gjj_percent * 100 + '%)'
+                item.orgValue = ee.expp_gjj_company.toFixed(0) + '(' + this.data.expp_gjj_percent * 100 + '%)'
             } else if (i == 5) {
-                item.orgValue = ee.gs_company.toFixed() + '(' + (city.gs_company_rate * 100).toFixed(2) + '%)'
+                item.orgValue = ee.gs_company.toFixed(0) + '(' + (city.gs_company_rate * 100).toFixed(2) + '%)'
             } else if (i == 6) {
-                item.orgValue = ee.shyu_company.toFixed() + '(' + (city.shyu_company_rate* 100).toFixed(2) + '%)'
+                item.orgValue = ee.shyu_company.toFixed(0) + '(' + (city.shyu_company_rate* 100).toFixed(2) + '%)'
             } else if (i == 7) {
-                item.value = ee.total_personal.toFixed()
-                item.orgValue = ee.total_company.toFixed()
+                item.value = ee.total_personal.toFixed(0)
+                item.orgValue = ee.total_company.toFixed(0)
             } else if (i == 8) {
-                item.value = this.data.additionTotal.toFixed()
+                item.value = this.data.additionTotal.toFixed(0)
             } else if (i == 9) {
                 item.value = ee.before_tax.toFixed()
             } else if (i == 10) {
                 item.value = ee.tax.toFixed()
                 item.orgValue = ee.old_tax.toFixed() + '(老税法)'
             } else if (i == 11) {
-                item.value = ee.final_salary.toFixed()
-                item.orgValue = ee.old_final_salary.toFixed() + '(老税法)'
+                item.value = ee.final_salary.toFixed(0)
+                item.orgValue = ee.old_final_salary.toFixed(0) + '(老税法)'
             }
         }
 
