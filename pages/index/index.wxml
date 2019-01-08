@@ -84,7 +84,7 @@
     <view class='history-table-wrap' hidden="{{hidden_pichart}}">
         <view class="table">
             <view class="tr">
-                <view class="th th1"></view>
+                <view class="th th1">项目</view>
                 <view class="th th2">个人应缴</view>
                 <view class="th th3">公司应缴</view>
             </view>

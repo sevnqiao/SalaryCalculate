@@ -206,7 +206,8 @@ Page({
     // 勾选是否缴纳公积金
     bindGongJiJinCheckBoxChange(e) {
         this.setData({
-            gjj_check: !this.data.gjj_check
+            gjj_check: !this.data.gjj_check,
+            expp_gjj_check: false
         })
     },
     // 输入税前工资
@@ -281,16 +282,34 @@ Page({
         ee['yaonglao_personal'] = this.data.sb_num * city.yanglao_personal_rate
         ee['yiliao_personal'] = this.data.sb_num * city.yiliao_personal_rate
         ee['shiye_personal'] = this.data.sb_num * city.sy_personal_rate
-        ee['gjj_personal'] = this.data.gjj_num * city.gjj_personal_rate
-        ee['expp_gjj_personal'] = this.data.gjj_num * this.data.expp_gjj_percent
+        if (this.data.gjj_check) {
+            ee['gjj_personal'] = this.data.gjj_num * city.gjj_personal_rate
+            if (this.data.expp_gjj_check) {
+                ee['expp_gjj_personal'] = this.data.gjj_num * this.data.expp_gjj_percent
+            } else {
+                ee['expp_gjj_personal'] = 0;
+            }
+        } else {
+            ee['gjj_personal'] = 0;
+            ee['expp_gjj_personal'] = 0;
+        }
         ee['total_personal'] = ee.yaonglao_personal + ee.yiliao_personal + ee.shiye_personal + ee.gjj_personal + ee.expp_gjj_personal
 
         // 公司扣除项目
         ee['yaonglao_company'] = this.data.sb_num * city.yanglao_company_rate
         ee['yiliao_company'] = this.data.sb_num * city.yiliao_company_rate
         ee['shiye_company'] = this.data.sb_num * city.sy_company_rate
-        ee['gjj_company'] = this.data.gjj_num * city.gjj_company_rate
-        ee['expp_gjj_company'] = this.data.gjj_num * this.data.expp_gjj_percent
+        if (this.data.gjj_check) {
+            ee['gjj_company'] = this.data.gjj_num * city.gjj_company_rate
+            if (this.data.expp_gjj_check) {
+                ee['expp_gjj_company'] = this.data.gjj_num * this.data.expp_gjj_percent
+            } else {
+                ee['expp_gjj_company'] = 0;
+            }
+        } else {
+            ee['gjj_company'] = 0;
+            ee['expp_gjj_company'] = 0;
+        }
         ee['gs_company'] = this.data.sb_num * city.gs_company_rate
         ee['shyu_company'] = this.data.sb_num * city.shyu_company_rate
         ee['total_company'] = ee.yaonglao_company + ee.yiliao_company + ee.shiye_company + ee.gjj_company + ee.expp_gjj_company + ee.gs_company + ee.shyu_company
@@ -336,11 +355,11 @@ Page({
                 item.value = ee.shiye_personal.toFixed(0) + '(' + (city.sy_personal_rate * 100).toFixed(1) + '%)'
                 item.orgValue = ee.shiye_company.toFixed(0) + '(' + (city.sy_company_rate * 100).toFixed(1) + '%)'
             } else if (i == 3) {
-                item.value = ee.gjj_personal.toFixed(0) + '(' + (city.gjj_personal_rate * 100).toFixed() + '%)'
-                item.orgValue = ee.gjj_company.toFixed(0) + '(' + (city.gjj_company_rate * 100).toFixed() + '%)'
+                item.value = ee.gjj_personal.toFixed(0) + '(' + (ee.gjj_personal / this.data.gjj_num * 100).toFixed() + '%)'
+                item.orgValue = ee.gjj_company.toFixed(0) + '(' + (ee.gjj_company / this.data.gjj_num * 100).toFixed() + '%)'
             } else if (i == 4) {
-                item.value = ee.expp_gjj_personal.toFixed(0) + '(' + this.data.expp_gjj_percent * 100 + '%)'
-                item.orgValue = ee.expp_gjj_company.toFixed(0) + '(' + this.data.expp_gjj_percent * 100 + '%)'
+                item.value = ee.expp_gjj_personal.toFixed(0) + '(' + (ee.expp_gjj_personal / this.data.gjj_num * 100).toFixed() + '%)'
+                item.orgValue = ee.expp_gjj_company.toFixed(0) + '(' + (ee.expp_gjj_company / this.data.gjj_num * 100).toFixed() + '%)'
             } else if (i == 5) {
                 item.orgValue = ee.gs_company.toFixed(0) + '(' + (city.gs_company_rate * 100).toFixed(2) + '%)'
             } else if (i == 6) {
