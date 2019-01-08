@@ -1,7 +1,0 @@
-<!--components/radiogroup/index.wxml-->
-<radio-group class="radio-group" bindchange="radioChange">
-  <label class="radio" wx:for="{{itemsArray}}" wx:key="" class="{{index == selectIndex ? 'bc_green white': 'green'}}">
-    <radio value="{{item}}" checked="{{index == selectIndex}}" />
-    {{item}}
-  </label>
-</radio-group>
