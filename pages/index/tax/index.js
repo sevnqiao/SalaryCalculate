@@ -16,6 +16,7 @@ Page({
         this.setData({
             taxRateData: JSON.parse(options.taxRateData),
             oldTaxRateData: JSON.parse(options.oldTaxRateData),
+            yearTaxRateData: JSON.parse(options.yearTaxRateData)
         })
 
     },

@@ -1,0 +1,82 @@
+/* pages/index/year-tax/index.wxss */
+
+
+/* 表格 */
+.history-table-wrap, .salary-table-wrap{
+  /* position: absolute; */
+  width: 690rpx;
+  margin-left: 30rpx;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+/* 表格代码   */
+.table{
+  border:1px solid #dadada;
+  border-right:0;
+  border-bottom: 0;
+  width: 688rpx;
+
+}
+.tr{
+  width: 688rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.th,.td{
+  padding: 10px;
+  border-bottom: 1px solid #dadada;
+  border-right: 1px solid #dadada;
+  text-align: center;
+  width: 100%;
+}
+
+.salary-table-wrap .th1, .salary-table-wrap .td1{
+  width: 160rpx;
+}
+
+.old_tax{
+  font-size: 20rpx;
+  color: #bbb;
+}
+
+
+.th{
+  font-weight: 800;
+  background-color: #b66242;
+  font-size: 28rpx;
+  color: white;
+  text-align: center;
+}
+.td{
+  font-size: 26rpx;
+  color: #ec9480;
+}
+
+
+/* 顶部标题 */
+.salary{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 30rpx;
+  padding: 20rpx 0;
+  box-shadow:0px 30rpx 40rpx 50rpx #ec9480  inset;
+}
+
+.salary_desc{
+  font-size: 40rpx;
+  color: #666;
+}
+
+.salary_detail{
+  font-size: 80rpx;
+  color: #ec9480;
+}
+
+.salary_sub_desc{
+  font-size: 26rpx;
+  color: #666;
+  padding: 40rpx 30rpx;
+  text-align: center;
+}

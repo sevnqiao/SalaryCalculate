@@ -9,13 +9,15 @@
   margin: 2.5%;
   align-items: center;
 }
-.button{
-  height: 26px;
-  width: 150px;
-  margin-left: 10px;
-  color: #fff;
+.caclulate_button{
+  height: 100rpx;
+  width: 710rpx;
   background-color: #b66242;
-  align-content: center;
+  color: #fff;
+  border-radius: 20rpx;
+  line-height: 100rpx;
+  text-align: center;
+  margin: auto;
 }
 .line-margin {
   margin-top: 5px;
@@ -130,7 +132,7 @@
   text-align: center;
 }
 .td{
-  font-size: 20rpx;
+  font-size: 25rpx;
   color: #ec9480;
 }
 

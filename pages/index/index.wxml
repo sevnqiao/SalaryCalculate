@@ -1,119 +1,104 @@
 <!--index.wxml-->
-
 <view class="container">
-    <view class='salary'>
-        <picker bindchange="selectCity" value="{{cityIndex}}" range="{{cityArray}}" range-key="{{'name'}}">
-            <view class='city-select'>
-                <view>{{cityArray[cityIndex].name}}</view>
-                <image style="width: 30rpx; height: 30rpx;" src='/resources/arraw_bottom.png'></image>
-            </view>
+  <view class='salary'>
+    <picker bindchange="selectCity" value="{{cityIndex}}" range="{{cityArray}}" range-key="{{'name'}}">
+      <view class='city-select'>
+        <view>{{cityArray[cityIndex].name}}</view>
+        <image style="width: 30rpx; height: 30rpx;" src='/resources/arraw_bottom.png'></image>
+      </view>
+    </picker>
+
+    <view class='common-title margin-left'>税前工资:</view>
+    <view class='border option-item' style='width: 200%'>
+      <view class='common-title-unit'>¥</view>
+      <input class="option-input common-title shuiqianInput" type='digit' bindinput='inputShuiQian' value='{{shuiQianNum}}'></input>
+    </view>
+  </view>
+
+
+  <!-- 补充信息 -->
+  <view class="options">
+    <view class='common-title'>更多选项</view>
+    <view class='line-margin'></view>
+    <view class='option-item'>
+      <view class='common-title'>社保汇缴基数:</view>
+      <view class='option-item option-right-item'>
+        <input class="option-input border" disabled="{{disable_sb_input}}" type='digit' bindblur="blurSheBao" value='{{sb_num}}'></input>
+        <checkbox-group class="option-checkbox margin-left" bindchange="bindSheBaoInputCheckBoxChange">
+          <checkbox checked='{{!disable_sb_input}}'>自定义</checkbox>
+        </checkbox-group>
+      </view>
+    </view>
+    <view class='line-margin'></view>
+    <view class='option-item'>
+      <view class='common-title'>公积金汇缴基数:</view>
+      <view class='option-item option-right-item'>
+        <input class="option-input border" disabled="{{disable_gjj_input}}" type='digit' bindblur="blurGongJiJin" value='{{gjj_num}}'> </input>
+        <checkbox-group class="option-checkbox margin-left" bindchange="bindGongJiJinInputCheckBoxChange">
+          <checkbox checked='{{!disable_gjj_input}}'>自定义</checkbox>
+        </checkbox-group>
+      </view>
+    </view>
+    <view class='line-margin'></view>
+    <checkbox-group class="option-checkbox common-title" style="width:100%" bindchange="bindGongJiJinCheckBoxChange">
+      <checkbox checked='{{gjj_check}}'>汇缴公积金</checkbox>
+    </checkbox-group>
+    <view class='line-margin'></view>
+    <checkbox-group class="option-checkbox common-title" style="width:100%" bindchange="bindCheckBoxChange">
+      <checkbox checked='{{expp_gjj_check}}'>汇缴补充住房公积金(非政策强制)</checkbox>
+    </checkbox-group>
+    <view class='line-margin'></view>
+    <view class='option-item' hidden='{{expp_gjj_check===false}}'>
+      <view class="common-title">单位与个人汇缴比例：</view>
+      <picker bindchange="bindPickerChange" value="{{expp_gjj_index}}" range="{{expp_gjj_percent_array}}" range-key="{{'name'}}" disabled="{{!expp_gjj_check}}">
+        <view class='city-select'>
+          <view>{{expp_gjj_percent_array[expp_gjj_index].name}}</view>
+          <image style="width: 30rpx; height: 30rpx;" src='/resources/arraw_bottom.png'></image>
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <!-- 专项附加扣除 -->
+  <view class="options">
+    <view class='common-title'>专项附加扣除</view>
+    <view class='line-margin'></view>
+    <view class='addition'>
+      <view wx:for="{{additionArray}}" wx:key="item" style='height:30px;display:flex;'>
+        <text class='common-title'>{{item.name}}</text>
+        <picker bindchange="bindAdditionPickerChange" value="{{item.value}}" range="{{item.dataSource}}" id='{{index}}'>
+          <view class='city-select'>
+            <text>{{item.value}}</text>
+            <image style="width: 30rpx; height: 30rpx;" src='/resources/arraw_bottom.png'></image>
+          </view>
         </picker>
-
-        <view class='common-title margin-left'>税前工资:</view>
-        <view class='border option-item'>
-            <view class='common-title-unit'>¥</view>
-            <input class="option-input common-title shuiqianInput" type='digit' bindinput='inputShuiQian' value='{{shuiQianNum}}'></input>
-        </view>
-        <button class="button" size="mini" bindtap='caclulateAfterRateMoney'>计算</button>
+      </view>
     </view>
+    <view class="common-title">扣除项合计共{{additionTotal}}元</view>
+
+  </view>
+
+   <view class='options' bindtap='navgationToTaxCaculate' style='display:flex;just-content:space-between'>
+    <view class="common-title"> 查看税率计算公式</view>
+    <image src='/resources/arraw_bottom.png' style='width:20px;height:20px; transform:rotate(-90deg);'></image>
+  </view>
+
+  <view class="caclulate_button" bindtap='caclulateAfterRateMoney'>计算年度收入</view>
 
 
-    <!-- 补充信息 -->
-    <view class="options">
-        <view class='common-title'>更多选项</view>
-        <view class='line-margin'></view>
-        <view class='option-item'>
-            <view class='common-title'>社保汇缴基数:</view>
-            <view class='option-item option-right-item'>
-                <input class="option-input border" disabled="{{disable_sb_input}}" type='digit' bindblur="blurSheBao" value='{{sb_num}}'></input>
-                <checkbox-group class="option-checkbox margin-left" bindchange="bindSheBaoInputCheckBoxChange">
-                    <checkbox checked='{{!disable_sb_input}}'>自定义</checkbox>
-                </checkbox-group>
-            </view>
-        </view>
-        <view class='line-margin'></view>
-        <view class='option-item'>
-            <view class='common-title'>公积金汇缴基数:</view>
-            <view class='option-item option-right-item'>
-                <input class="option-input border" disabled="{{disable_gjj_input}}" type='digit' bindblur="blurGongJiJin" value='{{gjj_num}}'> </input>
-                <checkbox-group class="option-checkbox margin-left" bindchange="bindGongJiJinInputCheckBoxChange">
-                    <checkbox checked='{{!disable_gjj_input}}'>自定义</checkbox>
-                </checkbox-group>
-            </view>
-        </view>
-        <view class='line-margin'></view>
-        <checkbox-group class="option-checkbox common-title" style="width:100%" bindchange="bindGongJiJinCheckBoxChange">
-            <checkbox checked='{{gjj_check}}'>汇缴公积金</checkbox>
-        </checkbox-group>
-        <view class='line-margin'></view>
-        <checkbox-group class="option-checkbox common-title" style="width:100%" bindchange="bindCheckBoxChange">
-            <checkbox checked='{{expp_gjj_check}}'>汇缴补充住房公积金(非政策强制)</checkbox>
-        </checkbox-group>
-        <view class='line-margin'></view>
-        <view class='option-item' hidden='{{expp_gjj_check===false}}'>
-            <view class="common-title">单位与个人汇缴比例：</view>
-            <picker bindchange="bindPickerChange" value="{{expp_gjj_index}}" range="{{expp_gjj_percent_array}}" range-key="{{'name'}}" disabled="{{!expp_gjj_check}}">
-                <view class='city-select'>
-                    <view>{{expp_gjj_percent_array[expp_gjj_index].name}}</view>
-                    <image style="width: 30rpx; height: 30rpx;" src='/resources/arraw_bottom.png'></image>
-                </view>
-            </picker>
-        </view>
+
+  <!-- 饼状图分析 -->
+  <view class='options' hidden="{{hidden_pichart}}">
+    <view class="common-title">税前工资去向（共¥ {{shuiQianNum}}）</view>
+    <view class="chart-container">
+      <canvas canvas-id="pieCanvas" class="chart-canvas"></canvas>
     </view>
+  </view>
 
-    <!-- 专项附加扣除 -->
-    <view class="options">
-        <view class='common-title'>专项附加扣除</view>
-        <view class='line-margin'></view>
-        <view class='addition'>
-            <view wx:for="{{additionArray}}" wx:key="item" style='height:30px;display:flex;'>
-                <text class='common-title'>{{item.name}}</text>
-                <picker bindchange="bindAdditionPickerChange" value="{{item.value}}" range="{{item.dataSource}}" id='{{index}}'>
-                    <view class='city-select'>
-                        <text>{{item.value}}</text>
-                        <image style="width: 30rpx; height: 30rpx;" src='/resources/arraw_bottom.png'></image>
-                    </view>
-                </picker>
-            </view>
-        </view>
-        <view class="common-title">扣除项合计共{{additionTotal}}元</view>
-
+  <view class='options' hidden="{{hidden_pichart}}">
+    <view class="common-title">单位成本去向（共¥ {{org_pay}}）</view>
+    <view class="chart-container">
+      <canvas canvas-id="orgPieCanvas" class="chart-canvas"></canvas>
     </view>
-
-    <!-- 表格 -->
-    <view class='history-table-wrap' hidden="{{hidden_pichart}}">
-        <view class="table">
-            <view class="tr">
-                <view class="th th1">项目</view>
-                <view class="th th2">个人应缴</view>
-                <view class="th th3">公司应缴</view>
-            </view>
-            <view class="tr" wx:for="{{items}}" wx:key="{{item.value}}">
-                <view class="td td1">{{item.name}}</view>
-                <view class="td td2">{{item.value}}</view>
-                <view class="td td3">{{item.orgValue}}</view>
-            </view>
-        </view>
-    </view>
-
-    <!-- 饼状图分析 -->
-
-    <view class='options' hidden="{{hidden_pichart}}">
-        <view class="common-title">税前工资去向（共¥ {{shuiQianNum}}）</view>
-        <view class="chart-container">
-            <canvas canvas-id="pieCanvas" class="chart-canvas"></canvas>
-        </view>
-    </view>
-
-    <view class='options' hidden="{{hidden_pichart}}">
-        <view class="common-title">单位成本去向（共¥ {{org_pay}}）</view>
-        <view class="chart-container">
-            <canvas canvas-id="orgPieCanvas" class="chart-canvas"></canvas>
-        </view>
-    </view>
-
-    <view class='options' bindtap='navgationToTaxCaculate' style='display:flex;just-content:space-between'>
-        <view class="common-title"> 查看税率计算公式</view>
-        <image src='/resources/arraw_bottom.png' style='width:20px;height:20px; transform:rotate(-90deg);'></image>
-    </view>
+  </view>
 </view>

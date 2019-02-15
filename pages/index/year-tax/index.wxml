@@ -1,0 +1,65 @@
+<!--pages/index/year-tax/index.wxml-->
+
+<view class='salary'>
+  <text class='salary_desc'>你的当前年度的预估税后总收入</text>
+  <text class='salary_detail'>{{totalSalary}}</text>
+</view>
+
+
+
+<text class='salary_sub_desc'>每月个人和公司支出：</text>
+<!-- 表格 -->
+<view class='history-table-wrap' hidden="{{hidden_pichart}}">
+  <view class="table">
+    <view class="tr">
+      <view class="th th1">项目</view>
+      <view class="th th2">个人应缴</view>
+      <view class="th th3">公司应缴</view>
+    </view>
+    <view class="tr" wx:for="{{deductList}}" wx:key="{{item.value}}">
+      <view class="td td1">{{item.name}}</view>
+      <view class="td td2">{{item.value}}</view>
+      <view class="td td3">{{item.orgValue}}</view>
+    </view>
+  </view>
+</view>
+
+<text class='salary_sub_desc'>当前年度收入表：(注意：这里的1月指的是上个月12月份的)</text>
+<view class='salary-table-wrap'>
+  <view class="table">
+    <view class="tr">
+      <view class="th th1">月份</view>
+      <view class="th th2">扣税(老税法)</view>
+      <view class="th th3">税后工资(老税法)</view>
+    </view>
+    <view class="tr" wx:for="{{yearTaxList}}" wx:key="item">
+      <view class="td td1">{{item.mounth}}</view>
+      <view class="td td2">
+        {{item.tax}}
+        <text class='old_tax'> {{item.old_tax}} </text>
+      </view>
+      <view class="td td3">
+        {{item.final_salary}}
+        <text class='old_tax'>{{item.old_final_salary}}</text>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="th th1">合计</view>
+      <view class="th td2">
+        {{total.tax}}
+        <text class='old_tax'> {{total.oldTax}} </text>
+      </view>
+      <view class="th td3">
+        {{total.salary}}
+        <text class='old_tax'>{{total.oldSalary}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='salary_sub_desc'>
+  新税法相比少交了
+  <text style='color:#ec9480'>{{expp_salary}}</text> 
+  元，增加了很大的一份收入哟
+</view>
+<view></view>
+<text class='salary_sub_desc'>哎哟不错哦， 继续加油，争取早日出任CEO，迎娶白富美</text>
