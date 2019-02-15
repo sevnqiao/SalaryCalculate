@@ -83,6 +83,8 @@
     <image src='/resources/arraw_bottom.png' style='width:20px;height:20px; transform:rotate(-90deg);'></image>
   </view>
 
+  <ad unit-id="adunit-2f7aebee09412fc2"></ad>
+
   <view class="caclulate_button" bindtap='caclulateAfterRateMoney'>计算年度收入</view>
 
 

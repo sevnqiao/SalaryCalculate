@@ -10,12 +10,12 @@
   align-items: center;
 }
 .caclulate_button{
-  height: 100rpx;
+  height: 60rpx;
   width: 710rpx;
   background-color: #b66242;
   color: #fff;
   border-radius: 20rpx;
-  line-height: 100rpx;
+  line-height: 60rpx;
   text-align: center;
   margin: auto;
 }
