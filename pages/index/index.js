@@ -430,7 +430,9 @@ Page({
 
     // 扣税
     var yinShuiNum = currentMounth.totalShuiQianNum - currentMounth.totalAddition - currentMounth.total3J - currentMounth.totalBase
-
+    if (yinShuiNum < 0) {
+      yinShuiNum = 0
+    }
     if (currentMounth.mounth === 1) {
       yinShuiNum += this.data.additionTotal
     }
@@ -442,7 +444,11 @@ Page({
         taxRate = tempTaxRate
       }
     }
+    console.log(yinShuiNum, taxRate)
     currentMounth.tax = Number((yinShuiNum * taxRate.rate - taxRate.rapid - lastMounthTax.totalTax).toFixed(1))
+    if (currentMounth.tax < 0){
+      currentMounth.tax = 0
+    } 
     currentMounth.totalTax = Number((lastMounthTax.totalTax + currentMounth.tax).toFixed(1))
 
     // 最终工资
