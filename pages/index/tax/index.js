@@ -1,12 +1,20 @@
 // pages/tax/index.js
+
+
+import {
+  taxRateData,
+  yearTaxRateData,
+  oldTaxRateData
+} from '../../../resources/data.js'
+
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        taxRateData: [],
-        oldTaxRateData: [],
+
     },
 
     /**
@@ -14,9 +22,9 @@ Page({
      */
     onLoad: function (options) {
         this.setData({
-            taxRateData: JSON.parse(options.taxRateData),
-            oldTaxRateData: JSON.parse(options.oldTaxRateData),
-            yearTaxRateData: JSON.parse(options.yearTaxRateData)
+          taxRateData: taxRateData,
+          oldTaxRateData: oldTaxRateData,
+          yearTaxRateData: yearTaxRateData
         })
 
     },

@@ -24,7 +24,11 @@
   </view>
 </view>
 
-<ad unit-id="adunit-737e0d824c55550a"></ad>
+
+ <view style='width:690rpx;margin:30rpx'>
+  <ad unit-id="adunit-737e0d824c55550a"></ad>
+</view>
+
 
 <text class='salary_sub_desc'>当前年度收入表：(注意：这里的1月指的是上个月12月份的)</text>
 <view class='salary-table-wrap'>

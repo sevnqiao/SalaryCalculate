@@ -83,24 +83,10 @@
     <image src='/resources/arraw_bottom.png' style='width:20px;height:20px; transform:rotate(-90deg);'></image>
   </view>
 
-  <ad unit-id="adunit-2f7aebee09412fc2"></ad>
+  <view style='width:710rpx;margin:20rpx'>
+    <ad unit-id="adunit-2f7aebee09412fc2" ></ad>
+  </view>
 
   <view class="caclulate_button" bindtap='caclulateAfterRateMoney'>计算年度收入</view>
 
-
-
-  <!-- 饼状图分析 -->
-  <view class='options' hidden="{{hidden_pichart}}">
-    <view class="common-title">税前工资去向（共¥ {{shuiQianNum}}）</view>
-    <view class="chart-container">
-      <canvas canvas-id="pieCanvas" class="chart-canvas"></canvas>
-    </view>
-  </view>
-
-  <view class='options' hidden="{{hidden_pichart}}">
-    <view class="common-title">单位成本去向（共¥ {{org_pay}}）</view>
-    <view class="chart-container">
-      <canvas canvas-id="orgPieCanvas" class="chart-canvas"></canvas>
-    </view>
-  </view>
 </view>

@@ -36,7 +36,9 @@
     </view>
 </view>
 
-<ad unit-id="adunit-e789097c6f7d8094"></ad>
+ <view style='width:700rpx;margin:25rpx'>
+<ad  unit-id="adunit-e789097c6f7d8094"></ad>
+</view>
 
 <view class='common-title'>
     税后工资 = (税前工资 - 五险一金 - 起征点) * 税率 - 速算扣除数
