@@ -128,7 +128,8 @@ Page({
     var num = Number(e.detail.value)
     if (num > this.data.shuiQianNum) {
       num = this.data.shuiQianNum;
-    } else if (num < this.sb_min) {
+    }
+    if (num < this.sb_min) {
       num = this.sb_min;
     } else if (num > this.sb_max) {
       num = this.sb_max;
@@ -142,7 +143,8 @@ Page({
     var num = Number(e.detail.value)
     if (num > this.data.shuiQianNum) {
       num = this.data.shuiQianNum;
-    } else if (num < this.gjj_min) {
+    }
+    if (num < this.gjj_min) {
       num = this.gjj_min;
     } else if (num > this.gjj_max) {
       num = this.gjj_max;
@@ -169,6 +171,26 @@ Page({
 
 
   caclulateAfterRateMoney(e) {
+
+    const shuiQianSalary = this.data.shuiQianNum
+    var tips = ''
+    if (shuiQianSalary < 1000) {
+      tips = 'Sorry, 你的工资少的太可怜了，不足以驱动这个程序的运算，增加收入才是你目前该做的事情！'
+    } else if (shuiQianSalary > 200000) {
+      tips = 'Amazing, 你的工资太高了，吓的我都计算不出来了'
+    }
+    if(tips.length > 0) {
+      wx.showModal({
+        title: '',
+        content: tips,
+        showCancel: false
+      })
+      return
+    }
+
+
+
+
     wx.showLoading({
       title: '计算中...',
     })
