@@ -5,8 +5,6 @@
   <text class='salary_detail'>{{totalSalary}}</text>
 </view>
 
-
-
 <text class='salary_sub_desc'>每月个人和公司支出：</text>
 <!-- 表格 -->
 <view class='history-table-wrap' hidden="{{hidden_pichart}}">
@@ -25,8 +23,8 @@
 </view>
 
 
- <view style='width:690rpx;margin:30rpx'>
-  <ad unit-id="adunit-737e0d824c55550a"></ad>
+ <view style='width:710rpx;margin:20rpx 0'>
+  <ad unit-id="adunit-737e0d824c55550a" style='border-radius:8rpx;'></ad>
 </view>
 
 
@@ -62,7 +60,7 @@
     </view>
   </view>
 </view>
-<view class='salary_sub_desc'>
+<view class='salary_sub_desc' style='margin-top:10rpx;'>
   新税法相比少交了
   <text style='color:#ec9480'>{{expp_salary}}</text> 
   元，增加了很大的一份收入哟

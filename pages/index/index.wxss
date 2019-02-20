@@ -1,27 +1,32 @@
 
-.container{
-  margin-top: 30rpx;
-  height: 90%;
-  width: 100%;
+page{
+  padding: 20rpx;
+  width: 710rpx;
 }
-.salary{
+
+.betweent{
   display: flex;
-  margin: 2.5%;
+  justify-content: space-between;
   align-items: center;
 }
-.caclulate_button{
+
+.start{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.caclulate-button{
   height: 80rpx;
   width: 710rpx;
   background-color: #b66242;
   color: #fff;
-  border-radius: 20rpx;
+  border-radius: 8rpx;
   line-height: 80rpx;
   text-align: center;
   margin: auto;
 }
-.line-margin {
-  margin-top: 5px;
-}
+
 .city-select {
   display:flex;
   width:150rpx;
@@ -30,56 +35,34 @@
   justify-content: center;
   border-radius: 4rpx;
   color: #b66242;
-  font-size: 15px;
+  font-size: 30rpx;
 }
 /*  */
-.common-title-unit {
-  text-align: center;
-  width: 40px;
-  font-size: 15px;
-  color: #999;
-  margin-right: 10px;
-}
-
-.border {
-  border-bottom: 1px solid #999;
+.border-bottom-line {
+  border-bottom: 1px solid #ccc;
 }
 
 /*  */
 .options {
   background-color: #eee;
-  border-radius: 4px;
-  padding: 2.5%;
-  margin: 2.5%;
-  width: 90%;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  margin: 20rpx 0;
 }
-.common-title, .option-item {
-  font-size: 15px;
+.common-title {
+  font-size: 30rpx;
   color: #999;
-  width: 100%;
+  white-space:nowrap;
 }
-.option-item {
-  display: flex;
-  align-items: center;
-}
-.option-input {
+
+.text-center{
   text-align: center;
-  height: 18px;
 }
-.option-right-item {
-  float: right;
-}
-.option-checkbox{
-  width: 180px;
-  zoom: 60%;
-}
-.picker-input {
-  /* float: right; */
-  background-color: #ddd;
-  width: 100rpx;
-  text-align: center;
-  border-radius: 4rpx;
-  align-self: flex-start
+
+.arrow{
+  width: 40rpx;
+  height: 40rpx; 
+  margin-left:10rpx;
 }
 
 .margin-left{
@@ -91,57 +74,5 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-}
-
-
-/* 表格 */
-.history-table-wrap{
-  /* position: absolute; */
-  width: 95%;
-  margin-left: 2.5%;
-  margin-bottom: 40rpx;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-/* 表格代码   */
-.table{
-  border:1px solid #dadada;
-  border-right:0;
-  border-bottom: 0;
-  width: 98%;
-  margin-left: 1%;
-}
-.tr{
-  width:100%;
-  display: flex;
-  justify-content: space-between;
-}
-.th,.td{
-  padding: 10px;
-  border-bottom: 1px solid #dadada;
-  border-right: 1px solid #dadada;
-  text-align: center;
-  width: 100%;
-}
-
-.th{
-  font-weight: 800;
-  background-color: #b66242;
-  font-size: 28rpx;
-  color: white;
-  text-align: center;
-}
-.td{
-  font-size: 25rpx;
-  color: #ec9480;
-}
-
-/*  */
-.chart-container{
-  height:300px;
-}
-.chart-canvas{
-  margin-left: -5%;
-  height:100%;
-  width:auto;
+    margin-top: 20rpx;
 }

@@ -1,63 +1,104 @@
 <!--pages/tax/index.wxml-->
+<view style='width:710rpx;margin:20rpx 0'>
+  <ad unit-id="adunit-e789097c6f7d8094" style='border-radius:8rpx;'></ad>
+</view>
+<view class='common-title'>新修订的《个人所得税法》第十一条规定，从2019年1月份开始，居民个人取得综合所得，按年计算个人所得税；有扣缴义务人的，由扣缴义务人按月或者按次预扣预缴税款。那么，什么是预扣预缴呢？怎么计算呢？</view>
+<view class='common-title title'>预扣预缴与代扣代缴</view>
+<view class='common-title'>“代扣代缴”是指某一项收入在代扣代缴完税后，就已经是税后收入了，未来无需补税，比如现在的工资薪金、劳务报酬等；</view>
+<view class='common-title'>而2019年1月起，工资薪金、特许权使用费、劳务报酬和稿酬合起来称为综合所得，而综合所得是需要按年汇算清缴的，因此即使工资薪金平时单位履行扣缴义务后，其依然不是完全意义上的税后收入，因此用“预扣预缴”更加准确。</view>
+<view class='common-title title'>累计预扣法的来源</view>
+<view class='common-title'>1.此次税法修订，最大变化之一，是对综合所得实行按年计税。</view>
+<view class='common-title'>2.尽量减少纳税人办理年终汇算清缴的人数，特别是：只有一处工资薪金且在单位办理专项附加扣除纳税人，应该尽量让这些个人无须办理年度自行汇缴补退税。</view>
+<view class='common-title'>3.税务机关将通过提供扣缴软件，由单位录入当月收入、扣除等金额后，自动计算出每一个纳税人自年初起累计至当期的应纳税款，扣减已纳税款后，计算出每一个纳税人当期应纳的税款。</view>
+<view class='common-title title'>累计预扣法定义</view>
+<view class='common-title'>累计预扣法是指，扣缴义务人在一个纳税年度内，以截至当前月份累计支付的工资薪金所得收入额减除累计基本减除费用、累计专项扣除、累计专项附加扣除和依法确定的累计其他扣除后的余额为预缴应纳税所得额。</view>
+<view class='common-title'>对照综合所得税率表，计算出累计应预扣预缴税额，减除已预扣预缴税额后的余额，作为本期应预扣预缴税额。</view>
+<view class='common-title title'>什么是累计预扣法预扣预缴</view>
+<view class='common-title'>例1：2019年1月份实发李小姐工资15000元，当月专项扣除为2000元，专项附加扣除合计为3000元。</view>
+<view class='common-title'>则2019年2月申报个人所得税时：应纳税所得额=15000-5000-2000-3000=5000元，对应税率为3%，应纳个人所得税为5000*3%=150元；</view>
+<image class='image' src='http://www.renrenbeidiao.com/Upload/products/4ttkVXkA5EDHzR5MQGwAg1mxzF9lRpjxUkzIgyKkdny18YJZ0qvfTFfY14EGkjPqVs5YTJpEDiaicXQyhralChnw.jpg' mode='aspectFit' style='height:260rpx;'></image>
+<view class='common-title'>例2：2019年2月实发李小姐工资16000元，当月专项扣除为2100元，专项附加扣除合计为3050元，则2019年3月申报个人所得税时：</view>
+<view class='common-title'>1-2月累计应纳税所得额=(15000+16000)-(5000*2)-(2000+2100)-(3000+3050)=10850元，对应税率为3%，1-2月累计应纳个人所得税为10850*3%=325.50元，1月份已纳个人所得税为150元，则2月份应纳个人所得税为325.50-150=175.50元。</view>
+<view class='common-title'>因此，2019年3月份第二次申报时，以2019年1月份及2月份实际发放工资薪金总和减除基本减除费用5000元/月*2个月、1、2月份专项扣除、专项附加扣除以及其他允许扣除的项目后的余额为应纳税所得额，按照《工资薪金所得预扣预缴税率表》计算累计应预缴个人所得税额。</view>
+<view class='common-title'>例3：若李小姐3月份因个人原因请假导致工资只有2000元，扣除5000元、当月专项扣除为2000元，专项附加扣除为3000元。</view>
+<view class='common-title'>2019年4月份第三次申报个人所得税时：1-3月累计应纳税所得额=(15000+16000+2000)-(5000*3)-(2000+2100+2000)-(3000+3050+3000)=2850元，对应税率为3%，1-3月累计应纳个人所得税为2850*3%=85.50元，1-2月已纳个人所得税为325.50元，则截止至税款所属期3月份，李小姐多缴个人所得税240元，此时暂不办理退税，在次年3月至6月的汇算清缴期办理退税。</view>
+<view class='common-title title'>累计预扣法具体计算公式</view>
+<view class='common-title'>本期应预扣预缴税额=（累计预缴应纳税所得额×税率-速算扣除数）-已预扣预缴税额</view>
+<view class='common-title'>累计预缴应纳税所得额=累计收入-累计免税收入-累计基本减除费用-累计专项扣除-累计专项附加扣除-累计依法确定的其他扣除。</view>
+<view class='common-title'>其中：累计基本减除费用，按照5000元/月乘以当前月份数计算。</view>
+<view class='common-title title'>累计预扣法思路</view>
+<view class='common-title'>个体工商户/合伙企业的个人合伙人算预缴个税的思路、企业所得税预缴思路</view>
+<view class='common-title'>第一步：先把截止当月所有工资，相当于“年”算个税</view>
+<view class='common-title'>第二步：减去截止到上月已累计缴纳税额</view>
+<view class='common-title'>第三步：就是当月需要“缴”个税</view>
+<image class='image' src='http://www.renrenbeidiao.com/Upload/products/4ttkVXkA5EDHzR5MQGwAg1mxzF9lRpjxeM6T2uFl5OFKAOAuicwKGo99k9CMSJNUMeLIPdzIriaIr01IYMBibyibEA.jpg' mode='aspectFit' style='height:650rpx;'></image>
+<view class='common-title title'>累计预扣法思路案例</view>
+<view class='common-title'>【例】2019年1-6月，员工每个月工资18000元，三险一金每月扣除3200元，累计基本减除费用（按照5000元/月乘以当前月份数计算），不考虑其他情况，子女教育费、赡养老等专项附加扣除每月2500元，则：</view>
+<image class='image' src='http://www.renrenbeidiao.com/Upload/products/4ttkVXkA5EDHzR5MQGwAg1mxzF9lRpjx4vrcuUyfZjW3XPkCciaoF9jKLg0ly2emwvibib59paIB367srMicVKzNcA.jpg' mode='aspectFit' style='height:750rpx;'></image>
+<view class='common-title title'>累计预扣法好处</view>
+<view class='common-title'>提醒：如果按照每一个月算个税（适用换算后的月税率表）：</view>
+<view class='common-title'>每一个月应纳个税=（18000-5000-3200-2500）×10%-210=520元</view>
+<view class='common-title'>六个月总共应纳个税=6×520=3120元，和按年计算的1860元相差1260元，则会出现“只有一处工资薪金且在单位办理专项附加扣除纳税人”要在年终办理汇算清缴，增加征纳双方的纳税成本。</view>
+<view class='common-title'>采取累积预扣的方式是使预扣的税款最大趋同于年终的汇算清缴税款，最大限度地减少退补税的情况发生，从而减轻征纳双方的纳税成本。</view>
+<view class='common-title'>在员工愿意将专项附加扣除相关信息提供给单位，单位按月预扣预缴后，由于平时已经履行完了所有纳税义务，在没有其他综合所得，如劳务费、特许权使用费、稿酬所得时，由于综合所得等于全年工资薪金所得，并且不存在补税退税时，可以不参与汇算清缴。</view>
+<view class='common-title'>当然，中华人民共和国个人所得税法实施条例（修订草案征求意见稿）第三十三条另有规定的除外。</view>
+<view class='common-title'>实务中，有许多员工出于种种原因，无法或者不愿意把专项附加扣除相关信息提供给单位，此时，单位平时在发放工资薪金时，不进行专项附加扣除，而员工作为纳税人，应该将专项扣除信息提供给税务局，并在次年3月1日至6月30日办理汇算清缴，申请退税。</view>
+
+<view class='common-title'>附：</view>
+
 <view class='common-title'>
-    税后工资 = (税前工资 - 五险一金 - 起征点 - 附加扣除项) * 税率 - 速算扣除数
+  税后工资 = (税前工资 - 五险一金 - 起征点 - 附加扣除项) * 税率 - 速算扣除数
 </view>
 <view class='history-table-wrap'>
-    <view class="table">
-        <view class="tr">
-            <view class="th th1">级数</view>
-            <view class="th th2">含税级距(新版)</view>
-            <view class="th th3">税率税率(新版)</view>
-            <view class="th th4">速算扣除数(新版)</view>
-        </view>
-        <view class="tr" wx:for="{{taxRateData}}" wx:key="item">
-            <view class="td td1">{{index + 1}}</view>
-            <view class="td td2">{{item.minRateMoney}}  ~  {{item.maxRateMoney}}</view>
-            <view class="td td3">{{item.rateText}}</view>
-            <view class="td td4">{{item.rapid}}</view>
-        </view>
+  <view class="table">
+    <view class="tr">
+      <view class="th th1">级数</view>
+      <view class="th th2">含税级距(新版)</view>
+      <view class="th th3">税率税率(新版)</view>
+      <view class="th th4">速算扣除数(新版)</view>
     </view>
+    <view class="tr" wx:for="{{taxRateData}}" wx:key="item">
+      <view class="td td1">{{index + 1}}</view>
+      <view class="td td2">{{item.minRateMoney}} ~ {{item.maxRateMoney}}</view>
+      <view class="td td3">{{item.rateText}}</view>
+      <view class="td td4">{{item.rapid}}</view>
+    </view>
+  </view>
 </view>
 
 <view class='history-table-wrap'>
-    <view class="table">
-        <view class="tr">
-            <view class="th th1">级数</view>
-            <view class="th th2">含税级距(新版)</view>
-            <view class="th th3">税率税率(新版)</view>
-            <view class="th th4">速算扣除数(新版)</view>
-        </view>
-        <view class="tr" wx:for="{{yearTaxRateData}}" wx:key="item">
-            <view class="td td1">{{index + 1}}</view>
-            <view class="td td2">{{item.minRateMoney}}  ~  {{item.maxRateMoney}}</view>
-            <view class="td td3">{{item.rateText}}</view>
-            <view class="td td4">{{item.rapid}}</view>
-        </view>
+  <view class="table">
+    <view class="tr">
+      <view class="th th1">级数</view>
+      <view class="th th2">含税级距(新版)</view>
+      <view class="th th3">税率税率(新版)</view>
+      <view class="th th4">速算扣除数(新版)</view>
     </view>
-</view>
-
- <view style='width:700rpx;margin:25rpx'>
-<ad  unit-id="adunit-e789097c6f7d8094"></ad>
+    <view class="tr" wx:for="{{yearTaxRateData}}" wx:key="item">
+      <view class="td td1">{{index + 1}}</view>
+      <view class="td td2">{{item.minRateMoney}} ~ {{item.maxRateMoney}}</view>
+      <view class="td td3">{{item.rateText}}</view>
+      <view class="td td4">{{item.rapid}}</view>
+    </view>
+  </view>
 </view>
 
 <view class='common-title'>
-    税后工资 = (税前工资 - 五险一金 - 起征点) * 税率 - 速算扣除数
+  税后工资 = (税前工资 - 五险一金 - 起征点) * 税率 - 速算扣除数
 </view>
 <view class='history-table-wrap'>
-    <view class="table">
-        <view class="tr">
-            <view class="th th1">级数</view>
-            <view class="th th2">含税级距(旧版)</view>
-            <view class="th th3">税率税率(旧版)</view>
-            <view class="th th4">速算扣除数(旧版)</view>
-        </view>
-        <view class="tr" wx:for="{{oldTaxRateData}}" wx:key="item">
-            <view class="td td1">{{index + 1}}</view>
-            <view class="td td2">{{item.minRateMoney}}  ~  {{item.maxRateMoney}}</view>
-            <view class="td td3">{{item.rateText}}</view>
-            <view class="td td4">{{item.rapid}}</view>
-        </view>
+  <view class="table">
+    <view class="tr">
+      <view class="th th1">级数</view>
+      <view class="th th2">含税级距(旧版)</view>
+      <view class="th th3">税率税率(旧版)</view>
+      <view class="th th4">速算扣除数(旧版)</view>
     </view>
+    <view class="tr" wx:for="{{oldTaxRateData}}" wx:key="item">
+      <view class="td td1">{{index + 1}}</view>
+      <view class="td td2">{{item.minRateMoney}} ~ {{item.maxRateMoney}}</view>
+      <view class="td td3">{{item.rateText}}</view>
+      <view class="td td4">{{item.rapid}}</view>
+    </view>
+  </view>
 </view>
-
-

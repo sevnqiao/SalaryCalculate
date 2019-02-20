@@ -112,11 +112,30 @@ Page({
   },
   // 勾选是否缴纳公积金
   bindGongJiJinCheckBoxChange(e) {
+    const checkArray = e.detail.value
+    const gjj_check = checkArray.indexOf('gjj') > -1
+    const expp_gjj_check = checkArray.indexOf('expp_gjj') > -1
+    if (gjj_check) {
+      this.setData({
+        gjj_check: gjj_check,
+        expp_gjj_check: expp_gjj_check
+      })
+    } else {
+      this.setData({
+        gjj_check: false,
+        expp_gjj_check: false
+      })
+    }
+    
+  },
+  // 展开附加扣除
+  showAddition(){
+    console.log(123)
     this.setData({
-      gjj_check: !this.data.gjj_check,
-      expp_gjj_check: false
+      showAdditionItem: !this.data.showAdditionItem
     })
   },
+
   // 输入税前工资
   inputShuiQian(e) {
     this.setData({
@@ -380,20 +399,6 @@ Page({
     return currentMounth
   },
 
-
-
-
-
-
-
-
-
-
-  navgationToTaxCaculate() {
-    wx.navigateTo({
-      url: 'tax/index'
-    })
-  },
 
   navgationToYearTaxCaculate(yearTaxList, ee) {
     wx.navigateTo({

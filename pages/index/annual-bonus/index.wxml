@@ -1,0 +1,42 @@
+<!--pages/index/annual-bonus/index.wxml-->
+<view >
+  <view class='betweent common-title'>
+    <text class='margin-left'>年终奖金:</text>
+    <view class='annual-input betweent'>
+      <text>¥</text>
+      <input class='text-center' type='digit' bindinput='inputShuiQian' value='{{shuiQianNum}}'></input>
+    </view>
+  </view>
+
+  <!-- 表格 -->
+  <view class='history-table-wrap' hidden="{{hidden_pichart}}">
+    <view class="table">
+      <view class="tr">
+        <view class="th th1">项目</view>
+        <view class="th th2">新版</view>
+        <view class="th th3">旧版</view>
+      </view>
+      <view class="tr" wx:for="{{deductList}}" wx:key="{{item.value}}">
+        <view class="td td1">{{item.name}}</view>
+        <view class="td td2">{{item.value}}</view>
+        <view class="td td3">{{item.oldValue}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='common-title' wx:if='{{expp_salary > 0}}'>
+    新税法相比少交了
+    <text style='color:#ec9480'>{{expp_salary}}</text> 元，增加了很大的一份收入哟
+  </view>
+
+  <view class="caclulate-button" bindtap='caclulateAfterRateMoney'>计算年度收入</view>
+
+  
+  <view class='options betweent' bindtap='navgationToTaxCaculate' style='display:flex;just-content:space-between'>
+    <view class="title"> 查看年终奖税率计算公式</view>
+    <image src='/resources/arraw_bottom.svg' style='width:20px;height:20px; transform:rotate(-90deg);'></image>
+  </view>
+</view>
+
+<view style='width:710rpx;margin:20rpx 0; '>
+    <ad unit-id="adunit-603ad6e88f661c03" style='border-radius:8rpx;'></ad>
+</view>

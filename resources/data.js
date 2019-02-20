@@ -64,6 +64,7 @@ const cityArray = [
   { name: '南宁', enName: 'nanning', sb_min: 2834, sb_max: 14171, gjj_min: 1680, gjj_max: 18870, yanglao_personal_rate: 0.08, yiliao_personal_rate: 0.02, sy_personal_rate: 0.005, gjj_personal_rate: 0.012, yanglao_company_rate: 0.19, yiliao_company_rate: 0.07, sy_company_rate: 0.005, gjj_company_rate: 0.12, gs_company_rate: 0.004, shyu_company_rate: 0.008 },
 ]
 
+// 个税月度税率表
 const taxRateData = [
   { minRateMoney: 0, maxRateMoney: 3000, rate: 0.03, rateText: '3%', rapid: 0 },
   { minRateMoney: 3000, maxRateMoney: 12000, rate: 0.1, rateText: '10%', rapid: 210 },
@@ -74,6 +75,7 @@ const taxRateData = [
   { minRateMoney: 80000, maxRateMoney: 999999, rate: 0.45, rateText: '45%', rapid: 15160 }
 ]
 
+// 个税年度税率表
 const yearTaxRateData = [
   { minRateMoney: 0, maxRateMoney: 36000, rate: 0.03, rateText: '3%', rapid: 0 },
   { minRateMoney: 36000, maxRateMoney: 144000, rate: 0.1, rateText: '10%', rapid: 2520 },
@@ -84,6 +86,7 @@ const yearTaxRateData = [
   { minRateMoney: 9600000, maxRateMoney: 99999999, rate: 0.45, rateText: '45%', rapid: 181920 }
 ]
 
+// 旧版个税月度税率表
 const oldTaxRateData = [
   { minRateMoney: 0, maxRateMoney: 1500, rate: 0.03, rateText: '3%', rapid: 0 },
   { minRateMoney: 1500, maxRateMoney: 4500, rate: 0.1, rateText: '10%', rapid: 105 },
@@ -102,4 +105,6 @@ module.exports = {
   taxRateData: taxRateData,
   yearTaxRateData: yearTaxRateData,
   oldTaxRateData: oldTaxRateData,
+  annualTaxRateData: taxRateData,
+  oldAnnualTaxRateData: oldTaxRateData
 }

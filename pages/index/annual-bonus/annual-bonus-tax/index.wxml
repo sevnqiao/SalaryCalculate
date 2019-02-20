@@ -1,0 +1,108 @@
+<!--pages/index/annual-bonus/annual-bonus-tax/index.wxml-->
+<view style='width:710rpx;margin:20rpx 0; '>
+  <ad unit-id="adunit-5cde0cf0d74e0b6d" style='border-radius:8rpx;'></ad>
+</view>
+<view class='common-title'>
+  居民个人取得全年一次性奖金，符合《国家税务总局关于调整个人取得全年一次性奖金等计算征收个人所得税方法问题的通知》(国税发〔2005〕9号)规定的，在2021年12月31日前，不并入当年综合所得，以全年一次性奖金收入除以12个月得到的数额，按照通知所附按月换算后的综合所得税率表，确定适用税率和速算扣除数，单独计算纳税。
+</view>
+<view>
+  <view class='common-title'>
+    下面，就跟我们一起来算一算，你自己的年终奖应该如何缴纳个税。年终奖3万元减税1995元。我们先帮大家计算了1-10万元年终奖的应纳税情况。
+  </view>
+  <image class='image' src='http://cdn.upf.123.com.cn/caij/FileUpload/20181229/20181229083744596.jpg' mode='aspectFit' style='height:518rpx;'></image>
+  <view class='common-title'>
+    假设某单位的A、B、C三位员工，月薪同为8000元(减除“三险一金”后)，三人年终奖分别为3万元、10万元、和5万元。
+  </view>
+  <view class='common-title'>
+    A先生案例：
+  </view>
+  <view class='common-title'>
+    2019年获得年终奖3万元，年终奖个税的算法为，30000÷12=2500元，2500元适用现行税率表的3%税率，a的年终奖应交税30000*3%-0=900元。 与之对比，2017年A若年终奖同样为3万元，年终奖个税的算法为，30000÷12=2500元，2500元适用原税率表的10%税率，A的年终奖应交税30000*10%-105=2895元。 因此，个税改革后，A年终奖能减税1995元，减税比例约70%。
+  </view>
+  <view class='common-title'>
+    B先生案例：
+  </view>
+  <view class='common-title'>
+    2019年获得年终奖10万元，B年终奖缴纳个税的算法为，100000÷12=8333元，8333元适用现行税率表的10%税率，B的年终奖应交税100000*10%-210=9790元。 若2017年B也获得年终奖10万元，年终奖缴纳个税的算法为，100000÷12=8333元，8333元适用原税率表的20%税率，B的年终奖应交税100000*20%-555=19445元。 这样一来，B在今年个税改革后，年终奖能减税9655元，减税比例近50%。 可以发现，若年终奖平摊在12个月后的数额，跨越了税率表的税率档次(比如原适用20%，现适用10%的情况)则减税金额较高，减税比例较大。
+    但是也存在减税比例较小的情况，若年终奖平摊12个月后的数额未跨越税率档次，那么减税金额只有速算扣除数的变化。
+  </view>
+  <view class='common-title'>
+    C先生案例：
+  </view>
+  <view class='common-title'>
+    2019年发放年终奖5万元。C年终奖的个税算法为，50000÷12=4167元，4167元适用现行税率表的10%税率，C的年终奖应交税50000*10%-210=4790元。 若C先生2017年的年终奖也为50000元，原税率表中，4167元也适用10%税率，未跨越税率档次，速算扣除数为105，因此2017年年终奖交税50000*10%-105=4895元。 假设年终奖均为5万元不变的情况下，个税改革后，年终奖能减税105元，减税比例仅为2%。
+  </view>
+  <view class='common-title'>
+    年终奖优惠2022年之前不变，对于关注最多的年终奖问题，通知明确，在2021年12月31日前取得的全年一次性奖金，不并入当年综合所得，以全年一次性奖金收入除以12个月得到的数额，按照相应的综合所得税率表，确定适用税率和速算扣除数，单独计算纳税。自2022年1月1日起，居民个人取得全年一次性奖金，应并入当年综合所得计算缴纳个人所得税。
+  </view>
+
+  <view class='common-title'>
+    税率表如下：
+  </view>
+  <image class='image' src='http://cdn.upf.123.com.cn/caij/FileUpload/20181229/20181229083757490.jpg' mode='aspectFit' style='height:370rpx;'></image>
+  <view class='common-title'>
+    按照年终奖缴纳个税算法，年终奖在到达计税临界点时，会出现“宁可少千元不要超1元”的情况，因此需要合理避税。在新的税率表下，此前的年终奖避税区间也将会有所调整，具体有6大避税区间，如下：
+  </view>
+  <image class='image' src='http://cdn.upf.123.com.cn/caij/FileUpload/20181229/20181229083806118.jpg' mode='aspectFit' style='height:420rpx;'></image>
+  <view class='common-title'>
+    两个区间的年终奖个税减税幅度最大
+  </view>
+  <image class='image' src='http://cdn.upf.123.com.cn/caij/FileUpload/20181229/20181229083816585.png' mode='aspectFit' style='height:400rpx;'></image>
+  <view class='common-title'>
+    根据年终奖个税新旧对比，测算出减税幅度。
+  </view>
+  <view class='common-title'>
+    假设每月的平均收入已经超过5000元，单纯计算年终奖个税的问题。
+  </view>
+  <view class='common-title'>
+    据中国基金报测算，有2个区间的年终奖个税减税幅度很大，分别是1.8万到3.6万，减税幅度近70%。年终奖3万，按照老方法需要缴纳2895元个税，新的个税方法只需要缴纳900元，减少1995元或69%。
+  </view>
+  <view class='common-title'>
+    另一个是10.8万到14.4万，减税幅度近60%。年终奖14万，过去缴纳方法需要33995元，新的个税缴纳方法只要13790元，减少了20205元，减少幅度接近60%。
+  </view>
+  <view class='common-title'>
+    第三个减税力度较大的是5.4万到10.8万，减税幅度近50%，10万年终奖减税近1万。
+  </view>
+  <view class='common-title'>
+    手把手教你算年终奖个税
+  </view>
+  <view class='common-title'>
+    此次164号文明确，居民个人取得全年一次性奖金，符合《国家税务总局关于调整个人取得全年一次性奖金等计算征收个人所得税方法问题的通知》(国税发〔2005〕9号)规定的，在2021年12月31日前，不并入当年综合所得，以全年一次性奖金收入除以12个月得到的数额，按照通知所附按月换算后的综合所得税率表，确定适用税率和速算扣除数，单独计算纳税。
+  </view>
+  <image class='image' src='http://cdn.upf.123.com.cn/caij/FileUpload/20181229/20181229083825726.jpg' mode='aspectFit' style='height:650rpx;'></image>
+  <view class='common-title'>
+    大家年终奖最终需要交多少税，可以根据以下公式自行计算。雇员月薪所得高于(或等于)5000元的，适用公式为：应纳税额=雇员当月取得全年一次性奖金×适用税率-速算扣除数。 如果你月薪不足5000元的如何算?只需稍加调整，将年终奖发放当月的工资与5000元的差额算出来，再适用公式：应纳税额=(雇员当月取得全年一次性奖金-雇员当月工资薪金所得与费用扣除额的差额)×适用税率-速算扣除数。
+  </view>
+</view>
+
+<view class='history-table-wrap'>
+  <view class="table">
+    <view class="tr">
+      <view class="th th1">含税级距(新版)</view>
+      <view class="th th2">税率税率(新版)</view>
+      <view class="th th3">速算扣除数(新版)</view>
+    </view>
+    <view class="tr" wx:for="{{taxRateData}}" wx:key="item">
+      <view class="td td1">{{item.minRateMoney}} ~ {{item.maxRateMoney}}</view>
+      <view class="td td2">{{item.rateText}}</view>
+      <view class="td td3">{{item.rapid}}</view>
+    </view>
+  </view>
+</view>
+
+<view class='history-table-wrap'>
+  <view class="table">
+    <view class="tr">
+      <view class="th th1">含税级距(旧版)</view>
+      <view class="th th2">税率税率(旧版)</view>
+      <view class="th th3">速算扣除数(旧版)</view>
+    </view>
+    <view class="tr" wx:for="{{oldTaxRateData}}" wx:key="item">
+      <view class="td td1">{{item.minRateMoney}} ~ {{item.maxRateMoney}}</view>
+      <view class="td td2">{{item.rateText}}</view>
+      <view class="td td3">{{item.rapid}}</view>
+    </view>
+  </view>
+</view>
+
+

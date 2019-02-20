@@ -1,0 +1,94 @@
+/* pages/index/annual-bonus/index.wxss */
+
+
+page{
+  padding: 20rpx;
+  width: 710rpx;
+}
+
+.options {
+  background-color: #eee;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  margin: 20rpx 0;
+}
+
+.title {
+  font-size: 30rpx;
+  color: #999;
+}
+
+.betweent{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.common-title {
+  font-size: 30rpx;
+  color: #999;
+  white-space:nowrap;
+}
+
+.annual-input{
+  border: 1px solid #ccc;
+  border-radius: 8rpx;
+  padding: 5rpx 20rpx;
+  text-align: center;
+}
+
+.caclulate-button{
+  height: 80rpx;
+  width: 710rpx;
+  background-color: #b66242;
+  color: #fff;
+  border-radius: 8rpx;
+  line-height: 80rpx;
+  text-align: center;
+  margin: 20rpx 0;
+}
+
+
+/* 表格 */
+.history-table-wrap{
+  margin-left: 0;
+  margin: 20rpx 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+/* 表格代码   */
+.table{
+  border:2rpx solid #dadada;
+  border-right:0;
+  border-bottom: 0;
+}
+.tr{
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+}
+.th,.td{
+  padding: 20rpx;
+  border-bottom: 2rpx solid #dadada;
+  border-right: 2rpx solid #dadada;
+  text-align: center;
+  width: 100%;
+}
+
+.th{
+  font-weight: 800;
+  background-color: #b66242;
+  font-size: 28rpx;
+  color: white;
+  text-align: center;
+  border-right: 2rpx solid white;
+}
+.th3{
+  border-right: 2rpx solid #b66242;
+}
+.td{
+  font-size: 25rpx;
+  color: #b66242;
+}
