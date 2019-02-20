@@ -176,7 +176,7 @@ Page({
     var tips = ''
     if (shuiQianSalary < 1000) {
       tips = 'Sorry, 你的工资少的太可怜了，不足以驱动这个程序的运算，增加收入才是你目前该做的事情！'
-    } else if (shuiQianSalary > 200000) {
+    } else if (shuiQianSalary > 300000) {
       tips = 'Amazing, 你的工资太高了，吓的我都计算不出来了'
     }
     if(tips.length > 0) {
