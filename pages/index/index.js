@@ -399,5 +399,13 @@ Page({
     wx.navigateTo({
       url: `year-tax/index?yearTaxList=${JSON.stringify(yearTaxList)}&shuiQianNum=${this.data.shuiQianNum}&deductList=${JSON.stringify(deductList)}&caclulateResult=${JSON.stringify(ee)}`
     })
+  },
+
+
+    /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
   }
 })
