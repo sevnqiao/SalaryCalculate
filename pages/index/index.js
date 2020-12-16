@@ -41,6 +41,10 @@ Page({
 
   onLoad: function () {
 
+      wx.request({
+          url: 'https://rbac-new.dazhuanjia.com/bdc/homePage/content_display/configuration',
+      })
+      
     const cityDict = cityArray[this.data.cityIndex]
     this.gjj_min = cityDict.gjj_min
     this.gjj_max = cityDict.gjj_max
@@ -54,6 +58,57 @@ Page({
       sb_num: cityDict.sb_min,
       gjj_num: cityDict.gjj_min,
     })
+  },
+
+  initVideoAd () {
+    let random = parseInt(Math.random() * (10 - 1 + 1) + 1)
+    let lng = random % 2 
+    console.log(random, lng)
+    if (lng === 0) {
+      this.setData({
+        cacluateTitle: '计算年度收入'
+      }) 
+      return
+    }
+
+    this.setData({
+      cacluateTitle: '观看视频解锁年度收入表'
+    }) 
+
+    //实例
+//     let videoAd = wx.createRewardedVideoAd({
+//       adUnitId: 'adunit-dea07a31ebe19775'
+//     })
+
+//     this.videoAd = videoAd;
+
+//     videoAd.load()
+
+//     //捕捉错误
+//     videoAd.onError(err => {
+//       console.log(err)
+//     })
+
+//     //关闭视频的回调函数
+//     videoAd.onClose(res => {
+//       // 用户点击了【关闭广告】按钮
+//       // 小于 2.1.0 的基础库版本，res 是一个 undefined
+//       console.log(res)
+//       if (res && res.isEnded || res === undefined) {
+//         // 正常播放结束，可以下发游戏奖励
+//         setTimeout(() => {
+//           this.caclulate()
+//           this.videoAd = null
+//         }, 250)
+        
+//       } else {
+//         // 播放中途退出，不下发游戏奖励
+//         wx.showToast({
+//           title: '您的视频还没看完，无法获得年终奖计算结果',
+//           icon:'none'
+//         })
+//       }
+//     })
   },
 
   // 选择城市
@@ -217,7 +272,11 @@ Page({
     var random = Math.random() * (800 - 200 + 1) + 200
     setTimeout(function () {
       wx.hideLoading()
-      self.caclulate()
+      if(self.videoAd != null && self.videoAd != undefined && self.videoAd){
+        self.videoAd.show()
+      } else {
+        self.caclulate()
+      }
     }, random)
   },
 

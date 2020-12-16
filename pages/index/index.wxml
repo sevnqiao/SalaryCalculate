@@ -77,7 +77,7 @@
   <ad unit-id="adunit-2f7aebee09412fc2" style='border-radius:8rpx;'></ad>
 </view>
 
-<view class="caclulate-button" bindtap='caclulateAfterRateMoney'>计算年度收入</view>
+<view class="caclulate-button" bindtap='caclulateAfterRateMoney'>{{cacluateTitle}}</view>
 <navigator class='options betweent' url='/pages/index/annual-bonus/index?shuiQianNum={{shuiQianNum}}'>
   <view class="common-title" style='color:#b66242;'> 去计算年终奖</view>
   <image src='/resources/arraw_bottom.svg' class='arrow' style='transform:rotate(-90deg);'></image>
@@ -92,3 +92,8 @@
   <view class="common-title">查看年终奖个税计算方式</view>
   <image src='/resources/arraw_bottom.svg' style='width:20px;height:20px; transform:rotate(-90deg);'></image>
 </navigator>
+
+<button class='options betweent' open-type="share" style='display:flex;just-content:space-between'>
+  <view class="common-title">分享给好友</view>
+  <image src='/resources/arraw_bottom.svg' style='width:20px;height:20px; transform:rotate(-90deg);'></image>
+</button>

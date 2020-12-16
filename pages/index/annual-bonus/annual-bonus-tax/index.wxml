@@ -9,7 +9,7 @@
   <view class='common-title'>
     下面，就跟我们一起来算一算，你自己的年终奖应该如何缴纳个税。年终奖3万元减税1995元。我们先帮大家计算了1-10万元年终奖的应纳税情况。
   </view>
-  <image class='image' src='http://cdn.upf.123.com.cn/caij/FileUpload/20181229/20181229083744596.jpg' mode='aspectFit' style='height:518rpx;'></image>
+  <image class='image' src='https://cdn.upf.123.com.cn/caij/FileUpload/20181229/20181229083744596.jpg' mode='aspectFit' style='height:518rpx;'></image>
   <view class='common-title'>
     假设某单位的A、B、C三位员工，月薪同为8000元(减除“三险一金”后)，三人年终奖分别为3万元、10万元、和5万元。
   </view>
@@ -39,15 +39,15 @@
   <view class='common-title'>
     税率表如下：
   </view>
-  <image class='image' src='http://cdn.upf.123.com.cn/caij/FileUpload/20181229/20181229083757490.jpg' mode='aspectFit' style='height:370rpx;'></image>
+  <image class='image' src='https://cdn.upf.123.com.cn/caij/FileUpload/20181229/20181229083757490.jpg' mode='aspectFit' style='height:370rpx;'></image>
   <view class='common-title'>
     按照年终奖缴纳个税算法，年终奖在到达计税临界点时，会出现“宁可少千元不要超1元”的情况，因此需要合理避税。在新的税率表下，此前的年终奖避税区间也将会有所调整，具体有6大避税区间，如下：
   </view>
-  <image class='image' src='http://cdn.upf.123.com.cn/caij/FileUpload/20181229/20181229083806118.jpg' mode='aspectFit' style='height:420rpx;'></image>
+  <image class='image' src='https://cdn.upf.123.com.cn/caij/FileUpload/20181229/20181229083806118.jpg' mode='aspectFit' style='height:420rpx;'></image>
   <view class='common-title'>
     两个区间的年终奖个税减税幅度最大
   </view>
-  <image class='image' src='http://cdn.upf.123.com.cn/caij/FileUpload/20181229/20181229083816585.png' mode='aspectFit' style='height:400rpx;'></image>
+  <image class='image' src='https://cdn.upf.123.com.cn/caij/FileUpload/20181229/20181229083816585.png' mode='aspectFit' style='height:400rpx;'></image>
   <view class='common-title'>
     根据年终奖个税新旧对比，测算出减税幅度。
   </view>
@@ -69,7 +69,7 @@
   <view class='common-title'>
     此次164号文明确，居民个人取得全年一次性奖金，符合《国家税务总局关于调整个人取得全年一次性奖金等计算征收个人所得税方法问题的通知》(国税发〔2005〕9号)规定的，在2021年12月31日前，不并入当年综合所得，以全年一次性奖金收入除以12个月得到的数额，按照通知所附按月换算后的综合所得税率表，确定适用税率和速算扣除数，单独计算纳税。
   </view>
-  <image class='image' src='http://cdn.upf.123.com.cn/caij/FileUpload/20181229/20181229083825726.jpg' mode='aspectFit' style='height:650rpx;'></image>
+  <image class='image' src='https://cdn.upf.123.com.cn/caij/FileUpload/20181229/20181229083825726.jpg' mode='aspectFit' style='height:650rpx;'></image>
   <view class='common-title'>
     大家年终奖最终需要交多少税，可以根据以下公式自行计算。雇员月薪所得高于(或等于)5000元的，适用公式为：应纳税额=雇员当月取得全年一次性奖金×适用税率-速算扣除数。 如果你月薪不足5000元的如何算?只需稍加调整，将年终奖发放当月的工资与5000元的差额算出来，再适用公式：应纳税额=(雇员当月取得全年一次性奖金-雇员当月工资薪金所得与费用扣除额的差额)×适用税率-速算扣除数。
   </view>

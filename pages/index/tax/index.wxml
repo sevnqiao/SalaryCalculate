@@ -16,7 +16,7 @@
 <view class='common-title title'>什么是累计预扣法预扣预缴</view>
 <view class='common-title'>例1：2019年1月份实发李小姐工资15000元，当月专项扣除为2000元，专项附加扣除合计为3000元。</view>
 <view class='common-title'>则2019年2月申报个人所得税时：应纳税所得额=15000-5000-2000-3000=5000元，对应税率为3%，应纳个人所得税为5000*3%=150元；</view>
-<image class='image' src='http://www.renrenbeidiao.com/Upload/products/4ttkVXkA5EDHzR5MQGwAg1mxzF9lRpjxUkzIgyKkdny18YJZ0qvfTFfY14EGkjPqVs5YTJpEDiaicXQyhralChnw.jpg' mode='aspectFit' style='height:260rpx;'></image>
+<image class='image' src='https://www.renrenbeidiao.com/Upload/products/4ttkVXkA5EDHzR5MQGwAg1mxzF9lRpjxUkzIgyKkdny18YJZ0qvfTFfY14EGkjPqVs5YTJpEDiaicXQyhralChnw.jpg' mode='aspectFit' style='height:260rpx;'></image>
 <view class='common-title'>例2：2019年2月实发李小姐工资16000元，当月专项扣除为2100元，专项附加扣除合计为3050元，则2019年3月申报个人所得税时：</view>
 <view class='common-title'>1-2月累计应纳税所得额=(15000+16000)-(5000*2)-(2000+2100)-(3000+3050)=10850元，对应税率为3%，1-2月累计应纳个人所得税为10850*3%=325.50元，1月份已纳个人所得税为150元，则2月份应纳个人所得税为325.50-150=175.50元。</view>
 <view class='common-title'>因此，2019年3月份第二次申报时，以2019年1月份及2月份实际发放工资薪金总和减除基本减除费用5000元/月*2个月、1、2月份专项扣除、专项附加扣除以及其他允许扣除的项目后的余额为应纳税所得额，按照《工资薪金所得预扣预缴税率表》计算累计应预缴个人所得税额。</view>
@@ -31,10 +31,10 @@
 <view class='common-title'>第一步：先把截止当月所有工资，相当于“年”算个税</view>
 <view class='common-title'>第二步：减去截止到上月已累计缴纳税额</view>
 <view class='common-title'>第三步：就是当月需要“缴”个税</view>
-<image class='image' src='http://www.renrenbeidiao.com/Upload/products/4ttkVXkA5EDHzR5MQGwAg1mxzF9lRpjxeM6T2uFl5OFKAOAuicwKGo99k9CMSJNUMeLIPdzIriaIr01IYMBibyibEA.jpg' mode='aspectFit' style='height:650rpx;'></image>
+<image class='image' src='https://www.renrenbeidiao.com/Upload/products/4ttkVXkA5EDHzR5MQGwAg1mxzF9lRpjxeM6T2uFl5OFKAOAuicwKGo99k9CMSJNUMeLIPdzIriaIr01IYMBibyibEA.jpg' mode='aspectFit' style='height:650rpx;'></image>
 <view class='common-title title'>累计预扣法思路案例</view>
 <view class='common-title'>【例】2019年1-6月，员工每个月工资18000元，三险一金每月扣除3200元，累计基本减除费用（按照5000元/月乘以当前月份数计算），不考虑其他情况，子女教育费、赡养老等专项附加扣除每月2500元，则：</view>
-<image class='image' src='http://www.renrenbeidiao.com/Upload/products/4ttkVXkA5EDHzR5MQGwAg1mxzF9lRpjx4vrcuUyfZjW3XPkCciaoF9jKLg0ly2emwvibib59paIB367srMicVKzNcA.jpg' mode='aspectFit' style='height:750rpx;'></image>
+<image class='image' src='https://www.renrenbeidiao.com/Upload/products/4ttkVXkA5EDHzR5MQGwAg1mxzF9lRpjx4vrcuUyfZjW3XPkCciaoF9jKLg0ly2emwvibib59paIB367srMicVKzNcA.jpg' mode='aspectFit' style='height:750rpx;'></image>
 <view class='common-title title'>累计预扣法好处</view>
 <view class='common-title'>提醒：如果按照每一个月算个税（适用换算后的月税率表）：</view>
 <view class='common-title'>每一个月应纳个税=（18000-5000-3200-2500）×10%-210=520元</view>
