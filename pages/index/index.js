@@ -434,9 +434,9 @@ Page({
     if (yinShuiNum < 0) {
       yinShuiNum = 0
     }
-    if (currentMounth.mounth === 1) {
-      yinShuiNum += this.data.additionTotal
-    }
+    // if (currentMounth.mounth === 1) {
+      // yinShuiNum += this.data.additionTotal
+    // }
 
     var taxRate
     for (let i = 0; i < yearTaxRateData.length; ++i) {
@@ -465,6 +465,11 @@ Page({
     })
   },
 
+  jumpToOtherMP() {
+    wx.navigateToMiniProgram({
+      appId: 'wx0d224ec55d881b1e',
+    })
+  },
 
     /**
    * 用户点击右上角分享

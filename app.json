@@ -19,5 +19,8 @@
         "downloadFile": 10000
     },
     "debug": false,
-    "sitemapLocation": "sitemap.json"
+    "sitemapLocation": "sitemap.json",
+    "navigateToMiniProgramAppIdList": [
+        "wx0d224ec55d881b1e"
+    ]
 }

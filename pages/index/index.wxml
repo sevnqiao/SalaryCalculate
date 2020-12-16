@@ -97,3 +97,8 @@
   <view class="common-title">分享给好友</view>
   <image src='/resources/arraw_bottom.svg' style='width:20px;height:20px; transform:rotate(-90deg);'></image>
 </button>
+
+<navigator class='options betweent' target="miniProgram" open-type="navigate" app-id="wx0d224ec55d881b1e" version="trial" style='display:flex;just-content:space-between'>
+  <view class="common-title">我的其它小程序</view>
+  <image src='/resources/arraw_bottom.svg' style='width:20px;height:20px; transform:rotate(-90deg);'></image>
+</navigator>
