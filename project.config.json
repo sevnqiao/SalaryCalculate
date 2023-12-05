@@ -1,7 +1,8 @@
 {
     "description": "项目配置文件",
     "packOptions": {
-        "ignore": []
+        "ignore": [],
+        "include": []
     },
     "setting": {
         "urlCheck": true,
@@ -26,37 +27,24 @@
         "showShadowRootInWxmlPanel": true,
         "packNpmManually": false,
         "packNpmRelationList": [],
-        "minifyWXSS": true
+        "minifyWXSS": true,
+        "babelSetting": {
+            "ignore": [],
+            "disablePlugins": [],
+            "outputPath": ""
+        }
     },
     "compileType": "miniprogram",
-    "libVersion": "2.0.4",
+    "libVersion": "3.2.4",
     "appid": "wx7ef616854b7e52c7",
     "projectname": "SalaryCalculate",
-    "debugOptions": {
-        "hidedInDevtools": []
-    },
-    "isGameTourist": false,
     "simulatorType": "wechat",
     "simulatorPluginLibVersion": {},
-    "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
+    "cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
     "condition": {
-        "search": {
-            "list": []
-        },
-        "conversation": {
-            "list": []
-        },
-        "plugin": {
-            "list": []
-        },
-        "game": {
-            "currentL": -1,
-            "list": []
-        },
         "miniprogram": {
             "list": [
                 {
-                    "id": 0,
                     "name": "计算方式",
                     "pathName": "pages/index/tax/index",
                     "query": "",
@@ -64,5 +52,9 @@
                 }
             ]
         }
+    },
+    "editorSetting": {
+        "tabIndent": "insertSpaces",
+        "tabSize": 4
     }
 }

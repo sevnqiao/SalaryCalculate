@@ -23,11 +23,11 @@ Page({
     // 是否缴纳补充公积金
     expp_gjj_check: Boolean(false),
     // 税前工资
-    shuiQianNum: Number(10000),
+    shuiQianNum: Number(20000),
     // 社保相关
-    sb_num: Number(0),
+    sb_num: Number(20000),
     // 公积金相
-    gjj_num: Number(0),
+    gjj_num: Number(20000),
 
     // 补充公积金
     expp_gjj_index: Number(0),
@@ -35,7 +35,7 @@ Page({
     // 附加抵扣项
     additionTotal: Number(0),
     // 城市数据
-    cityIndex: 0,
+    cityIndex: 1,
 
   },
 
@@ -51,12 +51,12 @@ Page({
     this.sb_min = cityDict.sb_min
     this.sb_max = cityDict.sb_max
 
+    this.initVideoAd()
+
     this.setData({
       expp_gjj_percent_array: expp_gjj_percent_array,
       additionArray: additionArray,
       cityArray: cityArray,
-      sb_num: cityDict.sb_min,
-      gjj_num: cityDict.gjj_min,
     })
   },
 
@@ -195,19 +195,22 @@ Page({
   inputShuiQian(e) {
     this.setData({
       shuiQianNum: Number(e.detail.value),
+      sb_num: Number(e.detail.value),
+      gjj_num: Number(e.detail.value)
     })
   },
   // 社保基数修改完成事件
   blurSheBao(e) {
     var num = Number(e.detail.value)
-    if (num > this.data.shuiQianNum) {
-      num = this.data.shuiQianNum;
-    }
+    // if (num > this.data.shuiQianNum) {
+    //   num = this.data.shuiQianNum;
+    // }
     if (num < this.sb_min) {
       num = this.sb_min;
-    } else if (num > this.sb_max) {
-      num = this.sb_max;
     }
+    //  else if (num > this.sb_max) {
+    //   num = this.sb_max;
+    // }
     this.setData({
       sb_num: num
     })
@@ -215,14 +218,15 @@ Page({
   // 公积金基数修改完成事件
   blurGongJiJin(e) {
     var num = Number(e.detail.value)
-    if (num > this.data.shuiQianNum) {
-      num = this.data.shuiQianNum;
-    }
+    // if (num > this.data.shuiQianNum) {
+    //   num = this.data.shuiQianNum;
+    // }
     if (num < this.gjj_min) {
       num = this.gjj_min;
-    } else if (num > this.gjj_max) {
-      num = this.gjj_max;
     }
+    //  else if (num > this.gjj_max) {
+    //   num = this.gjj_max;
+    // }
     this.setData({
       gjj_num: num
     })
